@@ -1,0 +1,40 @@
+@font-face {
+    font-family: THEOVD;
+    src: url('THEOVD__.woff');
+}
+
+
+:root,
+* {
+    --light-gray: rgb(100, 100, 100);
+    background-color: black;
+    color: white;
+    font-family: THEOVD;
+    letter-spacing: 1px;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 1em;
+    gap: 1em;
+    display: grid;
+    grid-template-columns: 100px minmax(300px, 2fr) minmax(300px, 2fr) 1fr;
+    grid-template-rows: 200px repeat(3, 500px);
+}
+
+
+
+.blue {
+    background-color: blue;
+    grid-column: 4/5;
+}
+
+header {
+    grid-column: 1/4;
+}
+
+aside {
+    background-color: yellow;
+    grid-row: 2/5;
+}
