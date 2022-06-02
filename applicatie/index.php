@@ -12,13 +12,33 @@
 
 <body>
     <header>
-        Dit is een voorbeeld van een header over drie kolommen
+        <div class="wit">logo</div>
+        <div class="wit searchbar">searchbar</div>
+        <div class="blauw tekst"></div>
+        <div class="wit vrij"></div>
     </header>
-    <div class="blue"></div>
-    <aside>
-        adasdasd
+    <aside class="wit">
+        loginicoon en naam
     </aside>
-    <?php for ($i = 0; $i < 100; $i++) echo ("<p>ik ben nu bij $i</p>") ?>
+    <div class="filler wit">thumbnail</div>
+    <div class="filler2 wit">thumbnail</div>
+    <div class="filler3 wit"></div>
+    <div class="filler4 rood">thumbnail</div>
+    <div class="filler5 wit"></div>
+    <div class="filler6 geel">thumbnail</div>
+    <div class="filler7 geel"></div>
+    <div class="filler8 wit">thumbnail</div>
+    <div class="filler9 blauw">thumbnail</div>
+    <div class="filler10 wit"></div>
+    <div class="rood main"></div>
+    <div class="genreselectie">
+        <div class="geel genretab"> genretab</div>
+        <div class="ondergenretab">
+            <div class="wit genrewit"></div>
+            <div class="wit genrewit"></div>
+        </div>
+    </div>
+
 
 </body>
 
