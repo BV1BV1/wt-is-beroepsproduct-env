@@ -44,11 +44,31 @@ body {
     margin: 1em;
     gap: 1em;
     display: grid;
-    grid-template-columns: minmax(60px, 1fr) repeat(5, minmax(120px, 1fr)) repeat(2, minmax(120px, 1fr)) 1fr;
-    grid-template-rows: 100px repeat(8, 150px);
+
 }
 
-.searchbar {
+@media (max-width: 480px) {
+    body {
+        grid-template-columns: minmax(50px, 1fr) repeat(4, minmax(50px, 1fr)) 1fr;
+        grid-template-rows: 80px repeat(12, 45px);
+    }
+}
+
+@media (min-width: 481px) and (max-width: 1199px) {
+    body {
+        grid-template-columns: minmax(60px, 1fr) repeat(4, minmax(100px, 1fr)) minmax(100px, 1fr) 1fr;
+        grid-template-rows: 90px repeat(10, 80px);
+    }
+}
+
+@media (min-width: 1200px) {
+    body {
+        grid-template-columns: minmax(40px, 1fr) repeat(5, minmax(120px, 1fr)) repeat(2, minmax(120px, 1fr)) 1fr;
+        grid-template-rows: 100px repeat(8, 150px);
+    }
+}
+
+/* .searchbar {
     grid-column: 2/-4;
 }
 
@@ -130,4 +150,4 @@ aside {
     overflow: hidden;
     grid-column: 1/2;
     grid-row: 2/6;
-}
+} */
