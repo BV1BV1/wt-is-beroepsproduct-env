@@ -12,7 +12,7 @@
     padding: 0;
     box-sizing: border-box;
     gap: 1em;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .wit {
@@ -47,9 +47,9 @@ body {
 
 }
 
-@media (max-width: 480px) {
+@media (max-width: 500px) {
     body {
-        grid-template-columns: repeat(5, minmax(60px, 1fr)) minmax(0, 1fr) 0fr;
+        grid-template-columns: repeat(6, minmax(45px, 1fr)) 0fr;
         grid-template-rows: repeat(13, 60px);
     }
 
@@ -60,7 +60,7 @@ body {
 
 @media (min-width: 481px) and (max-width: 800px) {
     body {
-        grid-template-columns: repeat(5, minmax(80px, 1fr)) minmax(40px, 1fr) 0fr;
+        grid-template-columns: repeat(6, minmax(70px, 1fr)) 0fr;
         grid-template-rows: 60px repeat(12, 85px);
     }
 
@@ -71,7 +71,7 @@ body {
 
 @media (min-width: 801px) and (max-width: 1200px) {
     body {
-        grid-template-columns: repeat(5, minmax(110px, 1fr)) repeat(2, minmax(80px, 1fr));
+        grid-template-columns: repeat(5, minmax(100px, 1fr)) repeat(2, minmax(90px, 1fr));
         grid-template-rows: 80px repeat(12, 110px);
     }
 
@@ -131,6 +131,10 @@ aside {
 
 .genrelijst {
     top: 50%;
+}
+
+h1 {
+    margin: 0;
 }
 
 aside>span {

@@ -19,7 +19,7 @@ while ($rij = $data->fetch()) {
     $genreText = $genreText . $genre . "<br>";
 }
 
-$genreTekst;
+$genreTekst = "";
 
 foreach ($genres as $genre) {
     $line = "<a class='links' href='index.php?genre=$genre'>$genre</a><br>";

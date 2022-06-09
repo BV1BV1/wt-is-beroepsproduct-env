@@ -39,7 +39,8 @@ require_once "genres.php";
         <p> <?php echo ($genreTekst) ?> </p>
     </div>
     <div class="genreselectie">
-        <div class="geel genretab"> genres <br> <br> <br>
+        <div class="geel genretab">
+            <h1 class="geel">genres</h1> <br>
             <div class="genrelijst geel"><?php echo ($genreText) ?></div>
         </div>
         <div class="ondergenretab">
