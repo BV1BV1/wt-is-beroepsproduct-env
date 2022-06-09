@@ -1,3 +1,7 @@
+<?php
+require_once "genres.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,13 +16,13 @@
 
 <body>
     <header>
-        <div class="wit">logo</div>
+        <div class="wit logo">logo</div>
         <div class="wit searchbar">searchbar</div>
-        <div class="blauw tekst"></div>
-        <div class="wit vrij"></div>
+        <div class="filler9 blauw">thumbnail</div>
+        <div class="filler5 wit"></div>
     </header>
     <aside class="wit">
-        loginicoon en naam
+        <span class="wit">loginicoon en naam</span>
     </aside>
     <div class="filler wit">thumbnail</div>
     <div class="filler2 wit">thumbnail</div>
@@ -30,9 +34,14 @@
     <div class="filler8 wit">thumbnail</div>
     <div class="filler9 blauw">thumbnail</div>
     <div class="filler10 wit"></div>
-    <div class="rood main"></div>
+    <div class="rood main">
+        <p> <?php var_dump($genres) ?> </p>
+        <p> <?php echo ($genreTekst) ?> </p>
+    </div>
     <div class="genreselectie">
-        <div class="geel genretab"> genretab</div>
+        <div class="geel genretab"> genres <br> <br> <br>
+            <div class="genrelijst geel"><?php echo ($genreText) ?></div>
+        </div>
         <div class="ondergenretab">
             <div class="wit genrewit"></div>
             <div class="wit genrewit"></div>
