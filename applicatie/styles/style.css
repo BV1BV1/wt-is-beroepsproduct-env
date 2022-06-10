@@ -122,7 +122,12 @@ header {
 
 img {
     max-width: 100%;
-    height: auto;
+    object-fit: cover;
+    mix-blend-mode: luminosity;
+}
+
+img:hover {
+    mix-blend-mode: normal;
 }
 
 .searchbar {
@@ -133,6 +138,7 @@ img {
 }
 
 .thumbnail {
+    padding: 0;
     display: flex;
     position: relative;
     text-align: center;

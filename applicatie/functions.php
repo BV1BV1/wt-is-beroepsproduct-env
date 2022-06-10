@@ -3,9 +3,9 @@ require_once 'db_connectie.php';
 
 function getContent()
 {
-    if (count($_GET) == 0) {
+    if (count($_GET) == 2) {
     } elseif ((count($_GET) == 1) && (isset($_GET['movie_id']))) {
-        getMovie($_GET['movie_id']);
+        return getMovie($_GET['movie_id']);
     } elseif ((count($_GET) == 1) && (isset($_GET['genre']))) {
         return getMovieByGenre($_GET['genre']);
     } else {
@@ -76,7 +76,7 @@ function getMovieByGenre($id)
     while ($rij = $query->fetch()) {
         $color = getColor();
         $size = getSize();
-        $line = "<div class='{$color} thumbnail'>" . "<img src='assets/" . $rij['cover_image'] . "' alt='." . $rij['title']  . "'><div>" . $rij['title'] . "</div></div>";
+        $line = "<div class='{$color} thumbnail'>" . "<img src='assets/" . $rij['cover_image'] . "' alt='" . $rij['title']  . "'><div>" . $rij['title'] . "</div></div>";
         $content .= $line;
     }
 
