@@ -120,9 +120,36 @@ header {
     grid-template-columns: subgrid;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 .searchbar {
     grid-column: 2/6;
     grid-row: 1/2;
+    display: grid;
+    grid-template-columns: subgrid;
+}
+
+.thumbnail {
+    display: flex;
+    position: relative;
+    text-align: center;
+    align-items: center;
+    justify-items: center;
+    overflow: hidden;
+}
+
+.thumbnail>img {
+    width: 100%;
+    height: fit-content;
+}
+
+.thumbnail>div {
+    position: absolute;
+    color: white;
+    background: transparent;
 }
 
 .logo {

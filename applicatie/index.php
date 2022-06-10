@@ -18,9 +18,7 @@ require_once "functions.php"
 <body>
     <header>
         <div class="wit logo">logo</div>
-        <div class="wit searchbar"> searchbar</div>
-        <!-- 
-        <div class="filler5 wit"></div> -->
+        <div class="wit searchbar"> searchbar </div>
     </header>
     <aside class="wit">
         <span class="wit">loginicoon en naam</span>
@@ -39,12 +37,12 @@ require_once "functions.php"
     <div class="filler10 wit"></div> -->
     <div class="rood main">
         <p> <?php var_dump($genres) ?> </p>
-        <p> <?php echo ($genreTekst) ?> </p>
+        <p> <?php echo $genreTekst ?> </p>
     </div>
     <div class="genreselectie">
         <div class="geel genretab">
             <h1 class="geel">genres</h1> <br>
-            <div class="genrelijst geel"><?php echo ($genreText) ?></div>
+            <div class="genrelijst geel"><?php echo $genreTekst ?></div>
         </div>
         <div class="ondergenretab">
             <div class="wit genrewit"></div>

@@ -5,7 +5,9 @@ function getContent()
 {
     if (count($_GET) == 0) {
     } elseif ((count($_GET) == 1) && (isset($_GET['movie_id']))) {
-    } elseif ((count($_GET) == 1) && (isset($_GET['movie_id']))) {
+        getMovie($_GET['movie_id']);
+    } elseif ((count($_GET) == 1) && (isset($_GET['genre']))) {
+        return getMovieByGenre($_GET['genre']);
     } else {
         $text = "";
         for ($i = 0; $i < 30; $i++) {
@@ -43,4 +45,40 @@ function getSize()
     } else {
         return "";
     }
+}
+
+function getMovie($id)
+{
+    $db = maakVerbinding();
+    $sql = "select * from movie
+            where movie_id = (:movie_id)";
+    $query = $db->prepare($sql);
+    $query->execute(['movie_id' => $id]);
+    $content = "";
+
+    while ($rij = $query->fetch()) {
+        $content .= "<div class='wit thumbnail'>" . "<img src='assets/" . $rij['cover_image']  . "' alt='." . $rij['title'] . "'><div>" . $rij['title'] . "</div></div>";
+    }
+
+    return $content;
+}
+
+function getMovieByGenre($id)
+{
+    $db = maakVerbinding();
+    $sql = "select * from movie m
+            join movie_genre mg on m.movie_id=mg.movie_id
+            where genre_name = (:genre)";
+    $query = $db->prepare($sql);
+    $query->execute(['genre' => $id]);
+    $content = "";
+
+    while ($rij = $query->fetch()) {
+        $color = getColor();
+        $size = getSize();
+        $line = "<div class='{$color} thumbnail'>" . "<img src='assets/" . $rij['cover_image'] . "' alt='." . $rij['title']  . "'><div>" . $rij['title'] . "</div></div>";
+        $content .= $line;
+    }
+
+    return $content;
 }
