@@ -1,5 +1,6 @@
 <?php
 require_once "genres.php";
+require_once "functions.php"
 ?>
 
 <!DOCTYPE html>
@@ -17,14 +18,16 @@ require_once "genres.php";
 <body>
     <header>
         <div class="wit logo">logo</div>
-        <div class="wit searchbar">searchbar</div>
-        <div class="filler9 blauw">thumbnail</div>
-        <div class="filler5 wit"></div>
+        <div class="wit searchbar"> searchbar</div>
+        <!-- 
+        <div class="filler5 wit"></div> -->
     </header>
     <aside class="wit">
         <span class="wit">loginicoon en naam</span>
     </aside>
-    <div class="filler wit">thumbnail</div>
+    <?= getContent() ?>
+    <!-- <div class="filler9 blauw"> </div> -->
+    <!-- <div class="filler wit">thumbnail</div>
     <div class="filler2 wit">thumbnail</div>
     <div class="filler3 wit"></div>
     <div class="filler4 rood">thumbnail</div>
@@ -33,7 +36,7 @@ require_once "genres.php";
     <div class="filler7 geel"></div>
     <div class="filler8 wit">thumbnail</div>
     <div class="filler9 blauw">thumbnail</div>
-    <div class="filler10 wit"></div>
+    <div class="filler10 wit"></div> -->
     <div class="rood main">
         <p> <?php var_dump($genres) ?> </p>
         <p> <?php echo ($genreTekst) ?> </p>
