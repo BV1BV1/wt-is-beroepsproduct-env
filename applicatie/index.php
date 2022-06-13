@@ -18,12 +18,14 @@ require_once "functions.php"
 <body>
     <header>
         <div class="wit logo">logo</div>
-        <div class="wit searchbar"> searchbar </div>
+        <!-- <div class="wit searchbar"> searchbar </div> -->
+        <div class="wit searchbar"> <?php var_dump(getMovieBySearch()) ?> </div>
     </header>
     <aside class="wit">
         <span class="wit">loginicoon en naam</span>
     </aside>
     <?= getContent() ?>
+    <!-- <?= getMovieBySearch() ?> -->
     <!-- <div class="filler9 blauw"> </div> -->
     <!-- <div class="filler wit">thumbnail</div>
     <div class="filler2 wit">thumbnail</div>
