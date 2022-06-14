@@ -21,7 +21,8 @@ function getContent()
     // }
 
     if (sizeof($_GET) > 0) {
-        return getMovieBySearch();
+        // return getMovieBySearch();
+        return searchedMoviesToHtml(getMovieBySearch());
     } else {
         $text = "";
         for ($i = 0; $i < 30; $i++) {
@@ -119,13 +120,16 @@ function createFiller()
     return $fillerText;
 }
 
+$params = [];
 function getMovieBySearch()
 {
     $db = maakVerbinding();
 
     $genre = "";
+
     if (isset($_GET['genre'])) {
         $genre = $_GET['genre'];
+        $params = ['genre' => $genre]; //zo array vullen?
     };
     $year = "";
     if (isset($_GET['year'])) {
@@ -166,20 +170,11 @@ function getMovieBySearch()
         if ($counter > 0) {
             $whereClause .= "AND ";
         }
-        // $whereClause .= " ( (pc.lastname LIKE '%(:name)%') OR (pd.lastname LIKE '%(:name)%') )";
         $whereClause .= " (pc.lastname like concat ('%', (:name), '%') OR pd.lastname like concat ('%', (:name2), '%') )";
-        // $whereClause .= " (pc.lastname OR pd.lastname) like concat ('%', (:name), '%') ";
     }
-    // $whereClause .= ")";
     $whereClause .= ")
                     GROUP BY m.movie_id, m.title, m.cover_image";
 
-    // $sql = "select * from movie m
-    //         join movie_genre mg on m.movie_id = mg.movie_id
-    //         join movie_Cast mc on m.movie_id = mc.movie_id
-    //         join movie_director md on m.movie_id = md.movie_id
-    //         join person pc on mc.person_id = pc.person_id
-    //         join person pd on md.person_id = pd.person_id";
     $sql = "select m.movie_id, m.title, m.cover_image from movie m
             join movie_genre mg on m.movie_id = mg.movie_id
             join movie_Cast mc on m.movie_id = mc.movie_id
@@ -191,6 +186,14 @@ function getMovieBySearch()
     $query = $db->prepare($sql);
     // $query->execute([':genre' => $genre, ':year' => $year, ':title' => $title, ':name' => $name]);
     // $query->execute([':genre' => $genre, ':year' => $year]);
+
+    // $paramText = "[";
+    // foreach ($params as $key=> $value){
+    //     $paramText .= $key . "=>" . $value . ", ";
+    // }
+    // $query->execute($paramText);
+
+    // $query->execute($params); en dan zo uitvoeren?
 
     if (sizeof($_GET) == 4) {
         $query->execute([':genre' => $genre, ':year' => $year, ':title' => $title, ':name' => $name, ':name2' => $name2]);
@@ -238,16 +241,29 @@ function getMovieBySearch()
     }
 
 
-    $content = "";
+    // $content = "";
 
-    while ($rij = $query->fetch()) {
-        $content .= createFiller();
-        $color = getColor();
-        // $size = getSize();
-        $line = "<div class='{$color} thumbnail'>" . "<img src='assets/" . $rij['cover_image'] . "' alt='" . $rij['title']  . "'><div>" . $rij['title'] . "</div></div>";
-        $content .= $line;
-    }
+    return $query->fetchAll();
 
-    return $content;
+    // while ($rij = $query->fetch()) {
+    //     $content .= createFiller();
+    //     $color = getColor();
+    //     // $size = getSize();
+    //     $line = "<div class='{$color} thumbnail'>" . "<img src='assets/" . $rij['cover_image'] . "' alt='" . $rij['title']  . "'><div>" . $rij['title'] . "</div></div>";
+    //     $content .= $line;
+    // }
+
+    // return $content;
     // return $sql;
+}
+
+function searchedMoviesToHtml($movies)
+{
+    $sql = "";
+    foreach ($movies as $movie) {
+        $sql .= createFiller();
+        $color = getColor();
+        $sql .= "<div class='{$color} thumbnail'>" . "<img src='assets/" . $movie['cover_image'] . "' alt='" . $movie['title']  . "'><div>" . $movie['title'] . "</div></div>";
+    }
+    return $sql;
 }
