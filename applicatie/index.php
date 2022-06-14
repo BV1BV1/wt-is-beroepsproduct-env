@@ -18,8 +18,8 @@ require_once "functions.php"
 <body>
     <header>
         <div class="wit logo">logo</div>
-        <!-- <div class="wit searchbar"> searchbar </div> -->
-        <div class="wit searchbar"> <?php var_dump(getMovieBySearch()) ?> </div>
+        <div class="wit searchbar"> searchbar </div>
+        <!-- <div class="wit searchbar"> <?php var_dump(getMovieBySearch()) ?> </div> -->
     </header>
     <aside class="wit">
         <span class="wit">loginicoon en naam</span>
@@ -38,8 +38,8 @@ require_once "functions.php"
     <div class="filler9 blauw">thumbnail</div>
     <div class="filler10 wit"></div> -->
     <div class="rood main">
-        <p> <?php var_dump($genres) ?> </p>
-        <p> <?php echo $genreTekst ?> </p>
+        <!-- <p> <?php var_dump($genres) ?> </p>
+        <p> <?php echo $genreTekst ?> </p> -->
     </div>
     <div class="genreselectie">
         <div class="geel genretab">
