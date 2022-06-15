@@ -16,7 +16,7 @@ $genreText = "";
 while ($rij = $data->fetch()) {
     $genre = $rij['Genre'];
     $genres[] = $genre;
-    $genreText = $genreText . $genre . "<br>";
+    // $genreText = $genreText . $genre . "<br>";
 }
 
 $genreTekst = "";

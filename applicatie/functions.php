@@ -1,25 +1,9 @@
 <?php
 require_once 'db_connectie.php';
+require_once 'helperfunctions.php';
 
 function getContent()
 {
-    // if (count($_GET) == 2) {
-    // } elseif ((count($_GET) == 1) && (isset($_GET['movie_id']))) {
-    //     return getMovie($_GET['movie_id']);
-    // } elseif ((count($_GET) == 1) && (isset($_GET['genre']))) {
-    //     return getMovieByGenre($_GET['genre']);
-    // } else {
-    //     $text = "";
-    //     for ($i = 0; $i < 30; $i++) {
-    //         $color = getColor();
-    //         $size = getSize();
-    //         $line = "<div class='{$color} {$size}'> {$i} </div>";
-    //         $text .= $line;
-    //     }
-
-    //     return $text;
-    // }
-
     if (sizeof($_GET) > 0) {
         // return getMovieBySearch();
         return searchedMoviesToHtml(getMovieBySearch());
@@ -31,44 +15,11 @@ function getContent()
             $line = "<div class='{$color} {$size}'> {$i} </div>";
             $text .= $line;
         }
-
         return $text;
     }
 }
 
-function getColor()
-{
-    $randNumber = rand(1, 10);
-    if ($randNumber < 6) {
-        return "wit";
-    } elseif ($randNumber < 8) {
-        return "blauw";
-    } elseif ($randNumber < 9) {
-        return "rood";
-    } else {
-        return "geel";
-    }
-}
 
-function getSize()
-{
-    $randNumber = rand(0, 100);
-    if ($randNumber < 10) {
-        return "spanC2";
-    } elseif ($randNumber < 20) {
-        return "spanR2";
-    } elseif ($randNumber < 26) {
-        return "spanC2R2";
-    } elseif ($randNumber < 32) {
-        return "spanR3";
-    } elseif ($randNumber < 36) {
-        return "spanC3";
-    } elseif ($randNumber < 40) {
-        return "spanC2R3";
-    } else {
-        return "";
-    }
-}
 
 function getMovie($id)
 {
@@ -86,67 +37,41 @@ function getMovie($id)
     return $content;
 }
 
-function getMovieByGenre($id)
-{
-    $db = maakVerbinding();
-    $sql = "select * from movie m
-            join movie_genre mg on m.movie_id=mg.movie_id
-            where genre_name = (:genre)";
-    $query = $db->prepare($sql);
-    $query->execute(['genre' => $id]);
-    $content = "";
-
-    while ($rij = $query->fetch()) {
-        $content .= createFiller();
-        $color = getColor();
-        $size = getSize();
-        $line = "<div class='{$color} thumbnail'>" . "<img src='assets/" . $rij['cover_image'] . "' alt='" . $rij['title']  . "'><div>" . $rij['title'] . "</div></div>";
-        $content .= $line;
-    }
-
-    return $content;
-}
-
-function createFiller()
-{
-    $fillerText = "";
-    $randomNumber = rand(0, 3);
-    for ($i = 0; $i < ($randomNumber); $i++) {
-        $color = getColor();
-        $size = getSize();
-        $line = "<div class='{$color} {$size}'></div>";
-        $fillerText .= $line;
-    }
-    return $fillerText;
-}
 
 $params = [];
+
 function getMovieBySearch()
 {
+    global $params;
     $db = maakVerbinding();
 
     $genre = "";
-
     if (isset($_GET['genre'])) {
         $genre = $_GET['genre'];
-        $params = ['genre' => $genre]; //zo array vullen?
+        $params = ['genre' => $genre];
     };
     $year = "";
     if (isset($_GET['year'])) {
         $year = $_GET['year'];
+        $params += ['year' => $year];
     };
     $title = "";
     if (isset($_GET['title'])) {
         $title = $_GET['title'];
+        $params += ['title' => $title];
     };
     $name = "";
     $name2 = "";
     if (isset($_GET['name'])) {
         $name = $_GET['name'];
         $name2 = $_GET['name'];
+        $params += ['name' => $name];
+        $params += ['name2' => $name2];
     };
 
-    $counter = 0;
+    $counter = 0; //bij de eerste toevoeging moet geen "AND" staan in de query , maar bij elke volgende wel
+
+    //onze select statement is altijd hetzelfde, maar de where statement wordt opgebouwd nav de opgegeven zoekwaardes
     $whereClause = " where (";
     if (isset($_GET['genre'])) {
         $whereClause .= " (mg.genre_name = (:genre)) ";
@@ -184,86 +109,34 @@ function getMovieBySearch()
     $sql .= $whereClause;
 
     $query = $db->prepare($sql);
-    // $query->execute([':genre' => $genre, ':year' => $year, ':title' => $title, ':name' => $name]);
-    // $query->execute([':genre' => $genre, ':year' => $year]);
-
-    // $paramText = "[";
-    // foreach ($params as $key=> $value){
-    //     $paramText .= $key . "=>" . $value . ", ";
-    // }
-    // $query->execute($paramText);
-
-    // $query->execute($params); en dan zo uitvoeren?
-
-    if (sizeof($_GET) == 4) {
-        $query->execute([':genre' => $genre, ':year' => $year, ':title' => $title, ':name' => $name, ':name2' => $name2]);
-    }
-    if (sizeof($_GET) == 3) {
-        if (!isset($_GET['genre'])) {
-            $query->execute([':year' => $year, ':title' => $title, ':name' => $name, ':name2' => $name2]);
-        } elseif (!isset($_GET['year'])) {
-            $query->execute([':genre' => $genre, ':title' => $title, ':name' => $name, ':name2' => $name2]);
-        } elseif (!isset($_GET['title'])) {
-            $query->execute([':genre' => $genre, ':year' => $year, ':name' => $name, ':name2' => $name2]);
-        } elseif (!isset($_GET['name'])) {
-            $query->execute([':genre' => $genre, ':year' => $year, ':title' => $title]);
-        }
-    }
-    if (sizeof($_GET) == 1) {
-        if (isset($_GET['genre'])) {
-            $query->execute([':genre' => $genre]);
-        } elseif (isset($_GET['year'])) {
-            $query->execute([':year' => $year]);
-        } elseif (isset($_GET['title'])) {
-            $query->execute([':title' => $title]);
-        } elseif (isset($_GET['name'])) {
-            $query->execute([':name' => $name, ':name2' => $name2]);
-        }
-    }
-    if (sizeof($_GET) == 2) {
-        if (isset($_GET['genre'])) {
-            if (isset($_GET['year'])) {
-                $query->execute([':genre' => $genre, ':year' => $year]);
-            } elseif (isset($_GET['title'])) {
-                $query->execute([':genre' => $genre, ':title' => $title]);
-            } elseif (isset($_GET['name'])) {
-                $query->execute([':genre' => $genre, ':name' => $name, ':name2' => $name2]);
-            }
-        } elseif (isset($_GET['year'])) {
-            if (isset($_GET['title'])) {
-                $query->execute([':year' => $year, ':title' => $title]);
-            } elseif (isset($_GET['name'])) {
-                $query->execute([':year' => $year, ':name' => $name, ':name2' => $name2]);
-            }
-        } elseif (isset($_GET['title'])) {
-            $query->execute([':title' => $title, ':name' => $name, ':name2' => $name2]);
-        }
-    }
-
-
-    // $content = "";
+    $query->execute($params);
 
     return $query->fetchAll();
-
-    // while ($rij = $query->fetch()) {
-    //     $content .= createFiller();
-    //     $color = getColor();
-    //     // $size = getSize();
-    //     $line = "<div class='{$color} thumbnail'>" . "<img src='assets/" . $rij['cover_image'] . "' alt='" . $rij['title']  . "'><div>" . $rij['title'] . "</div></div>";
-    //     $content .= $line;
-    // }
-
-    // return $content;
-    // return $sql;
 }
+
+
 
 function searchedMoviesToHtml($movies)
 {
     $sql = "";
+    $results = numberOfSearchresults(getMovieBySearch());
+    $color = getColor();
+
+    //boodschap als er geen films voldoen aan de zoekcriteria
+    if ($results == 0) {
+        $sql .= "<div class='{$color} thumbnail'> Sorry, we couldn't find a match.</div>";
+    }
+
+    //elke film wordt in een thumbnail gezet met wat "padding" van lege vakjes er om heen voor esthetische redenen
     foreach ($movies as $movie) {
         $sql .= createFiller();
         $color = getColor();
         $sql .= "<div class='{$color} thumbnail'>" . "<img src='assets/" . $movie['cover_image'] . "' alt='" . $movie['title']  . "'><div>" . $movie['title'] . "</div></div>";
+    }
+
+    //we willen bij klein aantal zoekpagina geen lege pagina maar nog steeds een soort van schilderij tonen
+    if ($results < 40) {
+        $sql .= createSpecificFiller(40 - $results);
     }
     return $sql;
 }
