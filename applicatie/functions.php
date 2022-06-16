@@ -46,6 +46,7 @@ function getMovieBySearch()
     $db = maakVerbinding();
 
     $genre = "";
+    // if (isset($_GET['genre']) && (strlen(trim($_GET['genre'])) > 0)) { oplossing voor lege strings werkt niet
     if (isset($_GET['genre'])) {
         $genre = $_GET['genre'];
         $params = ['genre' => $genre];
@@ -106,10 +107,17 @@ function getMovieBySearch()
             join movie_director md on m.movie_id = md.movie_id
             join person pc on mc.person_id = pc.person_id
             join person pd on md.person_id = pd.person_id";
-    $sql .= $whereClause;
 
-    $query = $db->prepare($sql);
-    $query->execute($params);
+    if (count($params) > 0) {
+        $sql .= $whereClause;
+    }
+
+    if (count($params) > 0) {
+        $query = $db->prepare($sql);
+        $query->execute($params);
+    } else {
+        $query = $db->query($sql);
+    }
 
     return $query->fetchAll();
 }

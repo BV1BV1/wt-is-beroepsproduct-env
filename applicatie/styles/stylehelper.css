@@ -1,0 +1,74 @@
+/* CSS voor kleuren */
+.wit {
+    background-color: rgb(240, 240, 240);
+    color: black;
+}
+
+.geel {
+    background-color: yellow;
+    color: black;
+}
+
+.blauw {
+    background-color: blue;
+    color: white;
+}
+
+.rood {
+    background-color: red;
+    color: white;
+}
+
+/* CSS voor groottes van kleurvelden */
+.spanC2 {
+    grid-column: span 2;
+}
+
+.spanR2 {
+    grid-row: span 2;
+}
+
+.spanC2R2 {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.spanR3 {
+    grid-row: span 3;
+}
+
+.spanC3 {
+    grid-column: span 3;
+}
+
+.spanC2R3 {
+    grid-column: span 2;
+    grid-row: span 3;
+}
+
+/* CSS voor gedrag links */
+a,
+.submitbutton {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:link {
+    color: black;
+}
+
+a:visited {
+    color: black;
+}
+
+a:hover {
+    color: white;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: black;
+}
+
+a:active {
+    color: white;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: black;
+}

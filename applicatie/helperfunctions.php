@@ -61,6 +61,9 @@ function createSpecificFiller($ammount)
 
 function numberOfSearchresults($searchresults)
 {
-    $numberOfResults = (int)count($searchresults);
+    $numberOfResults = "no search done";
+    if (count($_GET) > 0) {
+        $numberOfResults = (int)count($searchresults);
+    }
     return $numberOfResults;
 }
