@@ -11,12 +11,10 @@ $query =    "SELECT TOP 8 G.genre_name as Genre, count(mg.movie_id) as Aantal
 $data = $db->query($query);
 
 $genres = [];
-$genreText = "";
 
 while ($rij = $data->fetch()) {
     $genre = $rij['Genre'];
     $genres[] = $genre;
-    // $genreText = $genreText . $genre . "<br>";
 }
 
 $genreTekst = "";

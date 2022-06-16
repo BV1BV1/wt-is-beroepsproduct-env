@@ -24,7 +24,7 @@ function generateTop()
     $html =  '
     <header>
     <div class="logowrapper wit">
-    <div class="wit logo" id="top"><img class="wit" alt="logo" src="assets/logo.svg"></div>
+    <div class="wit logo" id="top"><a href="index.php"><img class="wit" alt="logo" src="assets/logo.svg"></a></div>
     </div>
     <div class="wit searchbar">' . numberOfSearchresults(getMovieBySearch()) . '</div>
 </header>

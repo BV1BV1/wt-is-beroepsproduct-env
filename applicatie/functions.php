@@ -126,25 +126,25 @@ function getMovieBySearch()
 
 function searchedMoviesToHtml($movies)
 {
-    $sql = "";
+    $html = "";
     $results = numberOfSearchresults(getMovieBySearch());
     $color = getColor();
 
     //boodschap als er geen films voldoen aan de zoekcriteria
     if ($results == 0) {
-        $sql .= "<div class='{$color} thumbnail'> Sorry, we couldn't find a match.</div>";
+        $html .= "<div class='{$color} thumbnail'> Sorry, we couldn't find a match.</div>";
     }
 
     //elke film wordt in een thumbnail gezet met wat "padding" van lege vakjes er om heen voor esthetische redenen
     foreach ($movies as $movie) {
-        $sql .= createFiller();
+        $html .= createFiller();
         $color = getColor();
-        $sql .= "<div class='{$color} thumbnail'>" . "<img src='assets/" . $movie['cover_image'] . "' alt='" . $movie['title']  . "'><div>" . $movie['title'] . "</div></div>";
+        $html .= "<div class='{$color} thumbnail'>" . "<img src='assets/" . $movie['cover_image'] . "' alt='" . $movie['title']  . "'><div>" . $movie['title'] . "</div></div>";
     }
 
     //we willen bij klein aantal zoekpagina geen lege pagina maar nog steeds een soort van schilderij tonen
     if ($results < 40) {
-        $sql .= createSpecificFiller(40 - $results);
+        $html .= createSpecificFiller(40 - $results);
     }
-    return $sql;
+    return $html;
 }
