@@ -139,8 +139,8 @@ function searchedMoviesToHtml($movies)
     foreach ($movies as $movie) {
         $html .= createFiller();
         $color = getColor();
-        $html .= "<div class='{$color} thumbnail'>" . "<img src='assets/" . $movie['cover_image'] . "' alt='" . $movie['title']  . "'><div>" . $movie['title'] . "</div></div>";
-        // $html .= "<div class='{$color} thumbnail'>" . "<img src='assets/" . $movie['cover_image'] . "' alt='" . $movie['title']  . "'><div>" . "<a href='movie.php?movie_id=" . $movie['movie_id'] . ">" .  $movie['title'] . "</a></div></div>";
+        // $html .= "<div class='{$color} thumbnail'>" . "<img src='assets/" . $movie['cover_image'] . "' alt='" . $movie['title']  . "'><div>" . $movie['title'] . "</div></div>";
+        $html .= "<div class='{$color} thumbnail'>" . "<img src='assets/" . $movie['cover_image'] . "' alt='" . $movie['title']  . "'><div><a href='movie.php?movie_id=" . $movie['movie_id'] . "'>" .  $movie['title'] . "</a></div></div>";
     }
 
     //we willen bij klein aantal zoekpagina geen lege pagina maar nog steeds een soort van schilderij tonen

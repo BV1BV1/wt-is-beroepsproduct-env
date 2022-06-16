@@ -19,7 +19,6 @@ require_once "templates.php"
 <?= generateHead() ?>
 
 <body>
-
     <?= generateTop() ?>
     <?= getContent() ?>
 

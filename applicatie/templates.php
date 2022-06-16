@@ -13,7 +13,7 @@ function generateHead()
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/normalize.css">
     <link rel="stylesheet" href="styles/style.css">
-    <title>Index</title>
+    <title>NETFLIX</title>
 </head>
     ';
     return $html;
