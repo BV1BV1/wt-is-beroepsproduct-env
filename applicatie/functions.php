@@ -46,10 +46,12 @@ function getMovieBySearch()
     $db = maakVerbinding();
 
     $genre = "";
+    $params = [];
+
     // if (isset($_GET['genre']) && (strlen(trim($_GET['genre'])) > 0)) { oplossing voor lege strings werkt niet
     if (isset($_GET['genre'])) {
         $genre = $_GET['genre'];
-        $params = ['genre' => $genre];
+        $params += ['genre' => $genre];
     };
     $year = "";
     if (isset($_GET['year'])) {

@@ -2,18 +2,13 @@
 require_once "functions.php";
 require_once "templates.php";
 require_once "genres.php";
-require_once "movieDetailFunctions.php"
+require_once "model/movies.php";
+require_once "view/movies.php";
 ?>
 
-<?= generateHead() ?>
+<?php
+$htmlContent = getMovieDetailsToHtml(getMovieDetails( $_GET['movie_id'])) 
+              .getMovieCastToHtml(getMovieCast())
+?>
 
-<body>
-    <?= generateTop() ?>
-
-    <?= getMovieDetailsToHtml(getMovieDetails()) ?>
-
-    <?= generateFooter() ?>
-    <?= getMovieCastToHtml(getMovieCast()) ?>
-</body>
-
-</html>
+<?php include_once "base.php" ?>

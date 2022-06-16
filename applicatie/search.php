@@ -9,6 +9,7 @@ require_once "genres.php";
 <body>
 
     <?= generateTop() ?>
+    
     <form class="searchForm" action="index.php" method="get">
         <div class="title wit">
             <label class="wit" for="text">Title</label>
