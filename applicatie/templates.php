@@ -26,7 +26,13 @@ function generateTop()
     <div class="logowrapper wit">
     <div class="wit logo" id="top"><a href="index.php"><img class="wit" alt="logo" src="assets/logo.svg"></a></div>
     </div>
-    <div class="wit searchbar">' . numberOfSearchresults(getMovieBySearch()) . '</div>
+    <div class="wit searchbar"> 
+        <form class="wit quickSearch" action="index.php" method="get">
+            <label class="wit" for="text">quick title search</label>
+            <input class="wit" type="text" id="title" name="title">
+        </form>
+        <a class="wit" href="search.php">advanced search</a> 
+    </div>
 </header>
 <aside class="wit">
     <span class="wit">loginicoon en naam</span>

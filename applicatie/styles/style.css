@@ -153,6 +153,14 @@ header .logowrapper {
     display: grid;
 }
 
+.searchbar a {
+    color: rgb(0, 0, 0, 0.5);
+}
+
+.searchbar a:hover {
+    color: rgb(0, 0, 0);
+}
+
 .logo img {
     margin-bottom: auto;
     object-fit: contain;
@@ -305,23 +313,7 @@ adress {
     grid-row: 4/5;
 }
 
-input {
-    width: 100%;
-    height: 2em;
-    border: none;
-}
 
-input[type=text] {
-    border: 2px solid black;
-    margin: 3px 0 2px 0;
-}
-
-input[type=text]:focus,
-input[type=text]:hover,
-input[type=text]:active {
-    outline: none;
-    border: 2px solid red;
-}
 
 .explanation {
     font-size: 0.6em;
@@ -367,4 +359,42 @@ option {
 .description {
     grid-column: 4/6;
     grid-row: 8/9;
+}
+
+/* registratiepagina */
+.registerForm {
+    display: grid;
+    grid-column: 2/6;
+    grid-row: 2/9;
+    grid-template-rows: subgrid;
+    grid-template-columns: subgrid;
+    overflow: hidden;
+    grid-auto-flow: dense;
+}
+
+.namedetails {
+    display: grid;
+    grid-column: span 1;
+    grid-row: span 2;
+}
+
+.payment,
+.contract {
+    display: grid;
+    grid-column: span 2;
+    grid-row: span 3;
+}
+
+.country,
+.birthday,
+.submitbutton,
+.password {
+    display: grid;
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+.radiobutton {
+    width: auto;
+    height: 1em;
 }
