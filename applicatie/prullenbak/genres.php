@@ -1,5 +1,10 @@
 <?php
 require_once 'db_connectie.php';
+
+
+
+
+
 $db = maakVerbinding();
 
 $query =    "SELECT TOP 8 G.genre_name as Genre, count(mg.movie_id) as Aantal

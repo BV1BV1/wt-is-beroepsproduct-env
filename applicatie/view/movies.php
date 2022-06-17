@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function getMovieDetailsToHtml($movies)
 {
@@ -32,4 +32,43 @@ function getMovieCastToHtml($movies)
 }
 
 
-?>
+//hieronder ophalen data en creeeren HTML niet goed gescheiden
+//op pagina index moet ik een variabele gebruiken omdat een functie in een heredoc niet goed werkt
+//als ik de onderstaande functies echter verdeel over view en model dan kan ik niet zomaar de variabele
+//getPopularGenres() in mijn html-functie gebruiken zonder dat ik de model-pagina zou includen in de view-pagina
+//en dat leek me minder efficient
+
+function getPopularGenres()
+{
+    $db = maakVerbinding();
+    $query =    "SELECT TOP 8 G.genre_name as Genre, count(mg.movie_id) as Aantal
+                FROM Genre G left outer join Movie_Genre MG 
+                    on G.genre_name = MG.genre_name
+                group by G.genre_name
+                ORDER by count(mg.movie_id) DESC";
+
+    $data = $db->query($query);
+
+    $genres = [];
+
+    while ($rij = $data->fetch()) {
+        $genre = $rij['Genre'];
+        $genres[] = $genre;
+    }
+
+    return $genres;
+}
+
+function getGenretabHtml($genres)
+{
+    $html = "";
+    foreach ($genres as $genre) {
+        $line = "<a class='links' href='index.php?genre=$genre'>$genre</a><br>";
+        $html .= $line;
+    }
+    return $html;
+}
+
+$genreLinks = getGenretabHtml(getPopularGenres());
+
+///eind genre-index

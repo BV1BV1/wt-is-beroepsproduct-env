@@ -1,8 +1,8 @@
 <?php
-require_once "genres.php";
 require_once "functions.php";
 require_once "templates.php";
 require_once "view/filler.php";
+require_once "view/movies.php";
 
 ?>
 
@@ -13,7 +13,7 @@ $htmlContent = <<<HTML
 <div class="genreselectie">
     <div class="geel genretab">
         <h1 class="geel">genres</h1> <br>
-        <div class="genrelijst geel"> $genreTekst </div>
+        <div class="genrelijst geel"> $genreLinks </div>
 </div>
 <div class="ondergenretab">
     <div class="wit genrewit"></div>
