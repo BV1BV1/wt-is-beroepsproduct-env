@@ -365,7 +365,7 @@ option {
 .registerForm {
     display: grid;
     grid-column: 2/6;
-    grid-row: 2/9;
+    grid-row: 2/7;
     grid-template-rows: subgrid;
     grid-template-columns: subgrid;
     overflow: hidden;
@@ -374,7 +374,7 @@ option {
 
 .namedetails {
     display: grid;
-    grid-column: span 1;
+    grid-column: span 2;
     grid-row: span 2;
 }
 
@@ -385,12 +385,25 @@ option {
     grid-row: span 3;
 }
 
+.payment {
+    display: grid;
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
 .country,
 .birthday,
 .submitbutton,
+.genreoptions,
+.yearoptions {
+    display: block;
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
 .password {
     display: grid;
-    grid-column: span 1;
+    grid-column: span 2;
     grid-row: span 1;
 }
 

@@ -1,14 +1,13 @@
 <?php
 require_once "functions.php";
 require_once "templates.php";
+require_once "view/searchdata.php"
 ?>
 
-<?= generateHead() ?>
 
-<body>
 
-    <?= generateTop() ?>
-
+<?php
+$htmlContent = '
     <form class="searchForm" action="index.php" method="get">
         <div class="title wit">
             <label class="wit" for="text">Title</label>
@@ -20,30 +19,11 @@ require_once "templates.php";
             <label class="geel" for="text">cast and crew</label>
             <input class="geel" type="text" id="name" name="name" placeholder="last name">
             <p class="explanation geel">will return any partial last name match for castmember or director</p>
-        </div>
-        <div class="year blauw">
-            <label class="blauw" for="year">select year</label>
-            <select class="blauw" id="year" name="year">
-                <optgroup class="blauw" label="YEAR">
-                    <option class="blauw" value=""></option>
-                    <option class="blauw" value="2005">2005</option>
-                    <option class="blauw" value="2006">2006</option>
-                    <option class="blauw" value="2007">2007</option>
-                </optgroup>
-            </select>
-        </div>
-        <div class="genre wit">
-            <label class="wit" for="genre">select genre</label>
-            <select class="wit" id="genre" name="genre">
-                <optgroup class="wit" label="GENRE">
-                    <option class="wit" value=""></option>
-                    <option class="wit" value="drama">DRAMA</option>
-                    <option class="wit" value="crime">CRIME</option>
-                    <option class="wit" value="horror">HORROR</option>
-                </optgroup>
-        </div>
-    </form>
-    <?= generateFooter() ?>
-</body>
+        </div>' .
+    getYearToHtml(getYearOptions()) .
+    genreToHtml(getGenreOptions()) .
+    '</form>
+'
+?>
 
-</html>
+<?php include_once "base.php" ?>

@@ -96,6 +96,10 @@ input[type=text] {
     margin: 3px 0 2px 0;
 }
 
+select {
+    margin: 3px 0 2px 0;
+}
+
 input[type=password]:focus,
 input[type=password]:hover,
 input[type=password]:active,
