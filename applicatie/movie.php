@@ -8,7 +8,9 @@ require_once "view/movies.php";
 <?php
 $htmlContent = getMovieDetailsToHtml(getMovieDetails($_GET['movie_id']))
     . getMovieCastToHtml(getMovieCast())
-    . createSpecificFiller(20)
+    . createSpecificFiller(8)
+    . searchedMoviesToHtml(getMoviesFromMoviecast())
+    . createSpecificFiller(12)
 ?>
 
 <?php include_once "base.php" ?>

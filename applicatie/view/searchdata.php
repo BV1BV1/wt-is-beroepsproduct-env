@@ -20,7 +20,7 @@ function genreToHtml($genres)
     <div class="genreOptions geel">
         <label class="geel genreOptions" for="genre">select genre</label>
         <select class="geel" id="genre" name="genre">
-        <option class="geel" value="any" deafult>any</option> 
+        <option class="geel" value="" deafult>any</option> 
     ';
 
     foreach ($genres as $genreOption) {
@@ -53,7 +53,7 @@ function getYearToHtml($years)
     <div class="yearoptions blauw">
         <label class="blauw yearoptions" for="year">select year</label>
         <select class="blauw" id="year" name="year">
-        <option class="blauw" value="any" deafult>any</option> 
+        <option class="blauw" value="" deafult>any</option> 
     ';
 
     foreach ($years as $yearOption) {
