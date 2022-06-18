@@ -187,9 +187,9 @@ function getCastmemberToHtml($movies)
         $html .= "<div class='{$color} thumbnail'>" . "<img src='assets/" . $movie['cover_image'] . "' alt='" . $movie['title']  . "'><div><a href='movie.php?movie_id=" . $movie['movie_id'] . "'>" .  $movie['title'] . "</a></div></div>";
     }
 
-    //we willen bij klein aantal zoekpagina geen lege pagina maar nog steeds een soort van schilderij tonen
-    // if ($results < 40) {
-    //     $html .= createSpecificFiller(40 - $results);
-    // }
+    // we willen bij klein aantal zoekpagina geen lege pagina maar nog steeds een soort van schilderij tonen
+    if ($results < 40) {
+        $html .= createSpecificFiller(40 - $results);
+    }
     return $html;
 }

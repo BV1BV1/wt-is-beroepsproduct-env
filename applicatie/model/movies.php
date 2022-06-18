@@ -70,20 +70,3 @@ function getMoviesFromMoviecast()
     $query = $db->query($sql);
     return $query->fetchAll();
 }
-
-// function getMoviesFromMoviecastmember()
-// {
-//     $db = maakVerbinding();
-//     $person_id = $_GET['person_id'];
-
-//     $sql = "select m.movie_id, m.title, m.cover_image from movie m
-//             join movie_Cast mc on m.movie_id = mc.movie_id 
-//             join movie_director md on m.movie_id = md.movie_id 
-//             join person pc on mc.person_id = pc.person_id 
-//             join person pd on md.person_id = pd.person_id
-//             where (pc.person_id=" . $person_id . " OR pd.person_id=" . $person_id . ")
-//             group by m.movie_id, m.title, m.cover_image";
-
-//     $query = $db->query($sql);
-//     return $query->fetchAll();
-// }

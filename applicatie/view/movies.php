@@ -20,42 +20,23 @@ function getMovieCastToHtml($movies)
     $html = "<div class='wit castDetails'><h1 class='wit'>Cast:</h1> <p class='wit'>";
 
     foreach ($movies as $movie) {
-        $text .= $movie['actor'] . ", ";
+        // $text .= $movie['actor'] . ", ";
+        $text .= "<a class='wit' href='index.php?person_id=" . $movie['person_id']
+            . "'>" . $movie['actor'] . "</a> ";
     }
     $text = rtrim($text, ", ");
     $html .= $text . "</p>";
     $html .= "<h1 class='wit'>Director: </h1><p class='wit'>";
-    $html .= $movies[0]['director'];
+
+    // $html .= $movies[0]['director'];
+    $html .= "<a class='wit' href='index.php?person_id=" . $movie['person_id']
+        . "'>" . $movie['director'] . "</a> ";
 
     $html .= "</p></div>";
     return $html;
 }
 
-// function getCastmemberToHtml($movies)
-// {
-//     $html = "";
-//     $results = numberOfSearchresults(getMoviesFromMoviecastmember());
-//     $color = getColor();
 
-//     //boodschap als er geen films voldoen aan de zoekcriteria
-//     if ($results == 0) {
-//         $html .= "<div class='{$color} thumbnail'> Sorry, we couldn't find a match.</div>";
-//     }
-
-//     //elke film wordt in een thumbnail gezet met wat "padding" van lege vakjes er om heen voor esthetische redenen
-//     foreach ($movies as $movie) {
-//         $html .= createFiller();
-//         $color = getColor();
-//         // $html .= "<div class='{$color} thumbnail'>" . "<img src='assets/" . $movie['cover_image'] . "' alt='" . $movie['title']  . "'><div>" . $movie['title'] . "</div></div>";
-//         $html .= "<div class='{$color} thumbnail'>" . "<img src='assets/" . $movie['cover_image'] . "' alt='" . $movie['title']  . "'><div><a href='movie.php?movie_id=" . $movie['movie_id'] . "'>" .  $movie['title'] . "</a></div></div>";
-//     }
-
-//     //we willen bij klein aantal zoekpagina geen lege pagina maar nog steeds een soort van schilderij tonen
-//     if ($results < 40) {
-//         $html .= createSpecificFiller(40 - $results);
-//     }
-//     return $html;
-// }
 
 //hieronder ophalen data en creeeren HTML niet goed gescheiden
 //op pagina index moet ik een variabele gebruiken omdat een functie in een heredoc niet goed werkt
