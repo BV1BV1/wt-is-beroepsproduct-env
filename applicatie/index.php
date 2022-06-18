@@ -8,8 +8,6 @@ require_once "view/movies.php";
 
 <?php
 $htmlContent = <<<HTML
-<div class="rood main">
-</div>
 <div class="genreselectie">
     <div class="geel genretab">
         <h1 class="geel">genres</h1> <br>

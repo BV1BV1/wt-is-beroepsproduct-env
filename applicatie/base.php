@@ -15,7 +15,7 @@
 <body>
     <?= generateTop() ?>
     <?= isset($filler) ? $filler : '' ?>
-
+    <?= isset($filler) ? $main : '' ?>
 
     <?= $htmlContent ?>
 

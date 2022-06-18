@@ -411,3 +411,57 @@ option {
     width: auto;
     height: 1em;
 }
+
+.thumbnail-container {
+    padding: 0;
+    position: relative;
+    display: grid;
+    grid-auto-flow: column;
+    /* overflow-x: hidden; */
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    grid-auto-columns: 100%;
+}
+
+.thumb {
+    padding: 0;
+    display: grid;
+    grid-auto-flow: column;
+}
+
+.thumb>a {
+    /* text-align: center;
+    justify-content: center; */
+    position: absolute;
+    color: white;
+    /* background: transparent; */
+}
+
+.next,
+.previous {
+    /* display: none; */
+    align-items: center;
+    z-index: 10;
+    position: absolute;
+    /* width: 3rem;
+    padding: 1rem; */
+    background: rgb(0 0 0 / 0);
+    opacity: 1;
+}
+
+.next:hover,
+.previous:hover {
+    background: rgb(0 0 0 / 0.3);
+}
+
+.previous {
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.next {
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
