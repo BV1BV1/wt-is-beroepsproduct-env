@@ -417,13 +417,14 @@ option {
     position: relative;
     display: grid;
     grid-auto-flow: column;
-    /* overflow-x: hidden; */
-    overflow-x: scroll;
+    overflow-x: hidden;
+    /* overflow-x: scroll; */
     scroll-behavior: smooth;
     grid-auto-columns: 100%;
 }
 
 .thumb {
+    position: relative;
     padding: 0;
     display: grid;
     grid-auto-flow: column;
@@ -438,7 +439,7 @@ option {
 }
 
 .next,
-.previous {
+.prev {
     /* display: none; */
     align-items: center;
     z-index: 10;
@@ -450,11 +451,11 @@ option {
 }
 
 .next:hover,
-.previous:hover {
+.prev:hover {
     background: rgb(0 0 0 / 0.3);
 }
 
-.previous {
+.prev {
     left: 0;
     top: 0;
     bottom: 0;
@@ -464,4 +465,25 @@ option {
     right: 0;
     top: 0;
     bottom: 0;
+}
+
+/* .thumb::before {
+    position: relative;
+    display: block;
+    content: " ";
+    margin-top: -285px;
+    height: 285px;
+    width: 10px;
+    visibility: hidden;
+    pointer-events: none;
+} */
+
+div span {
+    position: absolute;
+    width: 100%;
+    margin-top: -300px;
+    /* Size of fixed header */
+    padding-bottom: 300px;
+    display: block;
+    visibility: hidden;
 }
