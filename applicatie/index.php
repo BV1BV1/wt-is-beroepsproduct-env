@@ -3,6 +3,7 @@ require_once "functions.php";
 require_once "templates.php";
 require_once "view/filler.php";
 require_once "view/movies.php";
+include "session.php";
 
 ?>
 

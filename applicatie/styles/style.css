@@ -313,7 +313,9 @@ adress {
     grid-row: 4/5;
 }
 
-
+#country {
+    width: 100%;
+}
 
 .explanation {
     font-size: 0.6em;
@@ -430,12 +432,16 @@ option {
     grid-auto-flow: column;
 }
 
-.thumb>a {
-    /* text-align: center;
-    justify-content: center; */
+.thumb a {
     position: absolute;
     color: white;
     /* background: transparent; */
+}
+
+.movielink {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .next,
@@ -453,30 +459,26 @@ option {
 .next:hover,
 .prev:hover {
     background: rgb(0 0 0 / 0.3);
+    font-size: 2em;
 }
 
 .prev {
     left: 0;
     top: 0;
     bottom: 0;
+    writing-mode: sideways-lr;
+    text-align: center;
+    font-size: 1.5em;
 }
 
 .next {
     right: 0;
     top: 0;
     bottom: 0;
+    writing-mode: sideways-rl;
+    text-align: center;
+    font-size: 1.5em;
 }
-
-/* .thumb::before {
-    position: relative;
-    display: block;
-    content: " ";
-    margin-top: -285px;
-    height: 285px;
-    width: 10px;
-    visibility: hidden;
-    pointer-events: none;
-} */
 
 div span {
     position: absolute;

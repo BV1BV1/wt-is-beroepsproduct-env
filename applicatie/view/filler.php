@@ -27,13 +27,13 @@ $main = '
     <div class="thumb rood">
         <span id="tn-1"> &nbsp; </span>
         <img src="assets/HA_pic.jpg">
-        <a href="movie.php?movie_id=100667">titel</a>
+        <a class="movielink" href="movie.php?movie_id=100667">titel</a>
         <a class="next" href="#tn-2" aria-label="next">
         NEXT
         </a>
     </div>
 
-    <div class="thumb">
+    <div class="thumb rood">
         <span id="tn-2"> &nbsp; </span>
         <a class="prev" href="#tn-1" aria-label="prev">
         PREV
@@ -45,7 +45,7 @@ $main = '
         </a>
     </div>
 
-    <div class="thumb">
+    <div class="thumb rood">
         <span id="tn-3"> &nbsp; </span>
         <a class="prev" href="#tn-2" aria-label="prev">
         PREV
@@ -57,7 +57,7 @@ $main = '
         </a>
     </div>
 
-    <div class="thumb">
+    <div class="thumb rood">
         <span id="tn-4"> &nbsp; </span>
         <a class="prev" href="#tn-3" aria-label="prev">
         PREV

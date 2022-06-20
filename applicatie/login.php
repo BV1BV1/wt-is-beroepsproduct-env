@@ -14,6 +14,8 @@ if (!isset($_SESSION) && ($_SESSION['loggedIn'])) {
 } else {
     $htmlContent = createLoginScreen();
 }
+
+
 ?>
 
 <?php include_once "base.php" ?>

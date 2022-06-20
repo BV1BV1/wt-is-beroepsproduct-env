@@ -33,7 +33,7 @@ function contractsToHtml($contractOptions)
         <div class="blauw">
         <label class="blauw" for="' . $type . '"></label>
         <input class="blauw radiobutton" id="' . $type . '" type="radio"
-        name="contractOption" value="' . $type . '"> ' .  $type .  '
+        name="contractOption" value="' . $type . '" required> ' .  $type .  '
         <p class="blauw"><small class="blauw">Price: ' . $price . ' euro ' . $discount . '% discount</small></p>
         </div>   
     ';
@@ -70,7 +70,7 @@ function paymentOptionsToHtml($paymentOptions)
         <div class="blauw">
         <label class="blauw" for="' . $method . '"></label>
         <input class="blauw radiobutton" id="' . $method . '" type="radio"
-        name="paymentOption" value="' . $method . '"> ' .  $method .  '
+        name="paymentOption" value="' . $method . '" required> ' .  $method .  '
         </div>   
     ';
     }

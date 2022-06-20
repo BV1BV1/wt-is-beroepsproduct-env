@@ -4,6 +4,7 @@ require_once "templates.php";
 require_once "model/movies.php";
 require_once "view/movies.php";
 require_once "view/customerdata.php";
+include "session.php";
 ?>
 
 <?php
@@ -20,20 +21,21 @@ $htmlContent = '
             <input class="wit" type="text" id="username" name="username" required>
     </div>
     <div class="birthday wit">
-            <label class="wit" for="text">Birthday</label>
-            <input pattern=[0-3]{1}[0-9]{1}[0-1]{1}[0-9]{3} class="wit" type="text" id="birthday" name="birthday">
-            <small class="wit">format: ddmmyy</small>
+                <label class="wit" for="date">Birthday</label>
+                <input class="wit" id="date" type="date" name="birthday" required>
+                <small class="wit">format: ddmmyy</small>
+
     </div>
     <input class="rood submitbutton" type="submit" value="Register">
     <div class="wit password">
             <label class="wit" for="password">password</label>
-            <input class="wit" minlength="8" type="password" name="password">
+            <input class="wit" minlength="8" type="password" name="password" required>
             <small class="wit">min 8 chars</small>
     </div>
     '
-    . paymentOptionsToHtml(getPaymentData())
-    . contractsToHtml(getContractOptions())
-    . countryOptionsToHtml(getCountryOptions()) .
-    '</form>';
+        . paymentOptionsToHtml(getPaymentData())
+        . contractsToHtml(getContractOptions())
+        . countryOptionsToHtml(getCountryOptions()) .
+        '</form>';
 ?>
 <?php include_once "base.php" ?>
