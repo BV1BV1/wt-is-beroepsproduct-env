@@ -1,14 +1,25 @@
 <?php
+include "session.php";
+
 function displayWelcome()
 {
-    return "<div class='wit'>welcome</div>";
     $html = '
-    <h1 class="wit">Welcome' . getFirstName($_SESSION['customer_id']) . ' !</h1>
+    <h1 class="wit">Welcome' . htmlspecialchars($_SESSION['username']) . ' !</h1>
     ';
     return $html;
 }
 
 function createLoginScreen()
 {
-    return "<div class='wit'>login</div>";
+    $html = '
+        <form class="wit loginForm spanC2R2" action="processLogin.php" method="post">
+            <label class="wit" for="email">e-mail address</label>
+            <input class="wit" type="email" id="email" name="email" required>
+            <label class="wit" for="text">password</label>
+            <input class="wit" type="password" id="password" name="password" required>
+            <input class="wit submitbutton" type="submit" value="Log in">
+        </form>
+        ';
+
+    return $html;
 }
