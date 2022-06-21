@@ -1,6 +1,6 @@
 <?php
 require_once 'db_connectie.php';
-include "session.php";
+include_once "session.php";
 
 checkLogindetails();
 
@@ -17,14 +17,14 @@ function checkLogindetails()
             ';
     $query = $db->prepare($sql);
     $query->execute([':email' => $email]);
-    $encryptedPassword = "";
-    $passwords = $query->fetch();
-    foreach ($passwords as $password) {
-        $encryptedPassword .= $password;
-    }
 
-    $_SESSION['testPW'] = password_hash("1234password", PASSWORD_DEFAULT);
-    $_SESSION['passwordHash'] = $encryptedPassword;
+    $encryptedPassword = "";
+
+    $result = $query->fetch();
+    $encryptedPassword = $result['password'];
+
+    // $_SESSION['testPW'] = password_hash("1234password", PASSWORD_DEFAULT);
+    // $_SESSION['passwordHash'] = $encryptedPassword;
 
     if (password_verify($password, $encryptedPassword)) {
         if (isset($_SESSION['loginError'])) {
@@ -35,7 +35,7 @@ function checkLogindetails()
         $_SESSION['loginError'] = "Het was niet mogelijk om je me de ingevoerde gegevens in te loggen.";
     }
 
-    header("login.php");
+    header("Location: login.php");
     exit();
 }
 
@@ -56,5 +56,7 @@ function getUsername()
             ';
     $query = $db->prepare($sql);
     $query->execute([':email' => $email]);
-    return $query->fetch();
+
+    $result = $query->fetch();
+    return $result['user_name'];
 }

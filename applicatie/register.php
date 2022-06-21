@@ -4,7 +4,7 @@ require_once "templates.php";
 require_once "model/movies.php";
 require_once "view/movies.php";
 require_once "view/customerdata.php";
-include "session.php";
+include_once "session.php";
 ?>
 
 <?php
