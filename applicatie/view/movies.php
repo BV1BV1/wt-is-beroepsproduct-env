@@ -3,22 +3,22 @@
 function getMovieDetailsToHtml($movies)
 {
     $html = "";
-    // foreach ($movies as $movie) {
-    //     $color = getColor();
-    //     $html .= "<div class='{$color} thumbnail mainDetail'>" . "<img src='assets/" . $movie['cover_image'] . "' alt='" . $movie['title']  . "'><div>" . $movie['title'] . "</div></div>";
-    //     $html .= "<div class='blauw smallDetails'><p class='blauw'>duration:" . $movie['duration'] .
-    //         "</p> <p class='blauw'>year: " . $movie['publication_year'] . "</p> <p class='blauw'>price: " . $movie['price'] .
-    //         "</p></div> ";
-    //     $html .= "<div class='geel description'><h2 class='geel'>Description:</h2><p class='geel'>" . $movie['description'] . "</p></div>";
-    // }
 
-    if (isset($_SESSION['loggedIn'])  && ($_SESSION['loggedIn'])) {
-        foreach ($movies as $movie) {
+    foreach ($movies as $movie) {
+        $details = "<div class='blauw smallDetails'><p class='blauw'>duration:" . $movie['duration'] .
+            "</p> <p class='blauw'>year: " . $movie['publication_year'] . "</p> <p class='blauw'>price: " . $movie['price'] .
+            "</p></div> ";
+        $html .= "<div class='geel description'><h2 class='geel'>Description:</h2><p class='geel'>" . $movie['description'] . "</p></div>";
+
+        if (isset($_SESSION['loggedIn'])  && ($_SESSION['loggedIn'])) {
             $html .= '<video class="thumbnail mainDetail" controls src="assets/' . $movie['URL'] . '" alt="' . $movie['title'] . '" poster="assets/' . $movie['cover_image'] .
                 '" preload="metadata"></video>                  
-        ';
+                ';
+            $html .= $details;
+        } else {
+            $html .= "<div class='rood thumbnail mainDetail'>" . "<img src='assets/" . $movie['cover_image'] . "' alt='" . $movie['title']  . "'><div><a href='login.php'><h1 class='transparent'>log in to watch movie</h1></a></div></div>";
+            $html .= $details;
         }
-    } else {
     }
 
     return $html;
@@ -26,23 +26,29 @@ function getMovieDetailsToHtml($movies)
 
 function getMovieCastToHtml($movies)
 {
-    $text = "";
-    $html = "<div class='wit castDetails'><h1 class='wit'>Cast:</h1> <p class='wit'>";
+    $html = '';
+    if (count($movies) > 1) {
+        $text = "";
+        $html = "<div class='wit castDetails'><h1 class='wit'>Cast:</h1> <p class='wit'>";
 
-    foreach ($movies as $movie) {
-        // $text .= $movie['actor'] . ", ";
-        $text .= "<a class='wit' href='index.php?person_id=" . $movie['person_id']
-            . "'>" . $movie['actor'] . "</a> ";
+        foreach ($movies as $movie) {
+
+            $text .= "<a class='wit' href='index.php?person_id=" . $movie['person_id']
+                . "'>" . $movie['actor'] . "</a> ";
+        }
+
+        $text = rtrim($text, ", ");
+        $html .= $text . "</p>";
+        $html .= "<h1 class='wit'>Director: </h1><p class='wit'>";
+
+
+        $html .= "<a class='wit' href='index.php?person_id=" . $movie['person_id']
+            . "'>" . $movie['director'] . "</a> ";
+
+        $html .= "</p></div>";
+    } else {
+        $html = "<div class='wit castDetails'><h1 class='wit'>Geen castdetails beschikbaar</h1></div>";
     }
-    $text = rtrim($text, ", ");
-    $html .= $text . "</p>";
-    $html .= "<h1 class='wit'>Director: </h1><p class='wit'>";
-
-    // $html .= $movies[0]['director'];
-    $html .= "<a class='wit' href='index.php?person_id=" . $movie['person_id']
-        . "'>" . $movie['director'] . "</a> ";
-
-    $html .= "</p></div>";
     return $html;
 }
 

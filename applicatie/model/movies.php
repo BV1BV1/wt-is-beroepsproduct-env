@@ -57,16 +57,18 @@ function getMoviesFromMoviecast()
 
     $counter = 0;
 
-    foreach ($personArray as $person) {
-        $person_id = $person['person_id'];
-        if ($counter > 0) {
-            $sql .= " OR ";
+    if (count($personArray) > 1) {
+        foreach ($personArray as $person) {
+            $person_id = $person['person_id'];
+            if ($counter > 0) {
+                $sql .= " OR ";
+            }
+            $sql .= "(pc.person_id=" . $person_id . " OR pd.person_id=" . $person_id . ")";
+            $counter++;
         }
-        $sql .= "(pc.person_id=" . $person_id . " OR pd.person_id=" . $person_id . ")";
-        $counter++;
-    }
-    $sql .= ") AND NOT (m.movie_id=" . $movie_id  . ") group by m.movie_id, m.title, m.cover_image";
+        $sql .= ") AND NOT (m.movie_id=" . $movie_id  . ") group by m.movie_id, m.title, m.cover_image";
 
-    $query = $db->query($sql);
-    return $query->fetchAll();
+        $query = $db->query($sql);
+        return $query->fetchAll();
+    }
 }

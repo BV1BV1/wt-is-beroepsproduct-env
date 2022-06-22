@@ -19,7 +19,14 @@ function getContent()
     }
 }
 
-
+function getDefaultMovies()
+{
+    $db = maakVerbinding();
+    $sql = "select m.movie_id, m.title, m.cover_image, m.duration, m.publication_year, m.price, m.description, URL from movie m
+    where m.movie_id%8 = 0";
+    $query = $db->query($sql);
+    return $query->fetchAll();
+}
 
 function getMovie($id)
 {
@@ -137,11 +144,13 @@ function searchedMoviesToHtml($movies)
     }
 
     //elke film wordt in een thumbnail gezet met wat "padding" van lege vakjes er om heen voor esthetische redenen
-    foreach ($movies as $movie) {
-        $html .= createFiller();
-        $color = getColor();
-        // $html .= "<div class='{$color} thumbnail'>" . "<img src='assets/" . $movie['cover_image'] . "' alt='" . $movie['title']  . "'><div>" . $movie['title'] . "</div></div>";
-        $html .= "<div class='{$color} thumbnail'>" . "<img src='assets/" . $movie['cover_image'] . "' alt='" . $movie['title']  . "'><div><a href='movie.php?movie_id=" . $movie['movie_id'] . "'>" .  $movie['title'] . "</a></div></div>";
+    if ($movies && count($movies) > 1) {
+        foreach ($movies as $movie) {
+            $html .= createFiller();
+            $color = getColor();
+            // $html .= "<div class='{$color} thumbnail'>" . "<img src='assets/" . $movie['cover_image'] . "' alt='" . $movie['title']  . "'><div>" . $movie['title'] . "</div></div>";
+            $html .= "<div class='{$color} thumbnail'>" . "<img src='assets/" . $movie['cover_image'] . "' alt='" . $movie['title']  . "'><div><a href='movie.php?movie_id=" . $movie['movie_id'] . "'>" .  $movie['title'] . "</a></div></div>";
+        }
     }
 
     //we willen bij klein aantal zoekpagina geen lege pagina maar nog steeds een soort van schilderij tonen

@@ -352,6 +352,10 @@ option {
     grid-row: 2/7;
 }
 
+.transparent {
+    background: rgb(0 0 0 / 0);
+}
+
 .castDetails {
     grid-column: 1/4;
     grid-row: 7/10;

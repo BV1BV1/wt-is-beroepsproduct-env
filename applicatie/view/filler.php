@@ -1,4 +1,5 @@
 <?php
+// include
 global $filler;
 global $main;
 
@@ -8,14 +9,16 @@ if ((sizeof($_GET) == 1) && isset($_GET['person_id'])) {
     // return getMovieBySearch();
     $filler = searchedMoviesToHtml(getMovieBySearch());
 } else {
-    $text = "";
-    for ($i = 0; $i < 30; $i++) {
-        $color = getColor();
-        $size = getSize();
-        $line = "<div class='{$color} {$size}'> {$i} </div>";
-        $text .= $line;
-    }
-    $filler = $text;
+
+    $filler = searchedMoviesToHtml(getDefaultMovies());
+    // $text = "";
+    // for ($i = 0; $i < 30; $i++) {
+    //     $color = getColor();
+    //     $size = getSize();
+    //     $line = "<div class='{$color} {$size}'> {$i} </div>";
+    //     $text .= $line;
+    // }
+    // $filler = $text;
 }
 
 // $main = '<div class="rood main ">TEST
