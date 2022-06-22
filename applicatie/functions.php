@@ -206,9 +206,9 @@ function getCastmemberToHtml($movies)
 function generateCustomerHtml()
 {
     if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']) {
-        $greeting = generateGreeting() . ' ' .  $_SESSION['username'];
+        // $greeting = generateGreeting() . ' ' .  htmlspecialchars($_SESSION['username']);
         $html = '<div class="wit customerhtml">
-                    <div class="wit">' .  generateGreeting() . '<br><small class="wit highlightRed">' . $_SESSION['username']  . '</small>'  . '</div>
+                    <div class="wit">' .  generateGreeting() . '<br><small class="wit highlightRed">' . htmlspecialchars($_SESSION['username'])  . '</small>'  . '</div>
                     <div class="wit">
                         <a href="logout.php" class="wit side"><small class="wit">sign out</small></a>
                     </div>

@@ -4,7 +4,7 @@ include_once "session.php";
 function displayWelcome()
 {
     $username = $_SESSION['username'];
-    $html = '<h1 class="geel welcomeMessage">Welcome ' . $username . '</h1>';
+    $html = '<h1 class="geel welcomeMessage">Welcome ' . htmlspecialchars($username) . '</h1>';
     return $html;
 }
 
