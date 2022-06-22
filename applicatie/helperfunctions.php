@@ -67,3 +67,14 @@ function numberOfSearchresults($searchresults)
     }
     return $numberOfResults;
 }
+
+function generateGreeting(){
+    $hour = date('H');
+    if ($hour < 12) {
+        return 'good morning';
+      } elseif ($hour < 18) {
+        return 'good afternoon';
+      } else {
+        return 'good evening';
+      }
+}

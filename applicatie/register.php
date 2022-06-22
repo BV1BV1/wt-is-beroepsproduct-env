@@ -18,7 +18,7 @@ $htmlContent = '
             <label class="wit" for="email">e-mail adress</label>
             <input class="wit" type="email" id="email" name="email" required>
             <label class="wit" for="text">Username</label>
-            <input class="wit" type="text" id="username" name="username" required>
+            <input class="wit" type="text" maxlength="8" id="username" name="username" required>
     </div>
     <div class="birthday wit">
                 <label class="wit" for="date">Birthday</label>

@@ -56,7 +56,7 @@ body {
 
 @media (min-width: 501px) and (max-width: 800px) {
     body {
-        grid-template-columns: repeat(6, minmax(70px, 1fr));
+        grid-template-columns: minmax(60px, 2fr) repeat(5, minmax(70px, 3fr));
         grid-template-rows: 60px repeat(22, 85px);
     }
 
@@ -67,7 +67,7 @@ body {
 
 @media (min-width: 801px) and (max-width: 1200px) {
     body {
-        grid-template-columns: repeat(6, minmax(100px, 1fr));
+        grid-template-columns: minmax(90px, 2fr) repeat(5, minmax(100px, 3fr));
         grid-template-rows: 80px repeat(22, 110px);
     }
 
@@ -78,7 +78,7 @@ body {
 
 @media (min-width: 1200px) {
     body {
-        grid-template-columns: repeat(7, 1fr);
+        grid-template-columns: 2fr repeat(6, 3fr);
         grid-template-rows: 100px repeat(20, 140px);
     }
 
@@ -105,7 +105,12 @@ h1 {
     margin: 0;
 }
 
-aside>span {
+.main {
+    grid-column: 2/5;
+    grid-row: 2/5;
+}
+
+.side {
     writing-mode: sideways-lr;
 }
 
@@ -114,13 +119,20 @@ aside>span {
     grid-row: 2/5;
 }
 
-aside {
+.customerhtml {
     text-align: right;
     overflow: hidden;
     grid-column: 1/2;
     grid-row: 2/6;
 }
 
+.highlightRed {
+    color: red;
+}
+
+.customerhtml div {
+    padding: 0;
+}
 
 /* styling mbt (onderdelen van)header */
 header {
@@ -334,6 +346,8 @@ option {
 
 /* hoort by de moviedetails pagina */
 .mainDetail {
+    width: 100%;
+    height: 100%;
     grid-column: 2/-1;
     grid-row: 2/7;
 }
@@ -414,6 +428,7 @@ option {
     height: 1em;
 }
 
+/* styling voor de caroussel op de hoofdpagina */
 .thumbnail-container {
     padding: 0;
     position: relative;
@@ -488,4 +503,19 @@ div span {
     padding-bottom: 300px;
     display: block;
     visibility: hidden;
+}
+
+.loginForm {
+    overflow: hidden;
+    /* display: grid; */
+    margin: 0;
+}
+
+.loginForm input {
+    margin: 8px 8px;
+    width: 90%;
+}
+
+.loginForm label {
+    margin: 8px 8px;
 }

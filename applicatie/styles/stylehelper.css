@@ -112,3 +112,7 @@ input[type=text]:active {
     outline: none;
     border: 2px solid red;
 }
+
+input[type=submit] {
+    cursor:pointer;
+}

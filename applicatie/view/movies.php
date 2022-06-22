@@ -3,14 +3,24 @@
 function getMovieDetailsToHtml($movies)
 {
     $html = "";
-    foreach ($movies as $movie) {
-        $color = getColor();
-        $html .= "<div class='{$color} thumbnail mainDetail'>" . "<img src='assets/" . $movie['cover_image'] . "' alt='" . $movie['title']  . "'><div>" . $movie['title'] . "</div></div>";
-        $html .= "<div class='blauw smallDetails'><p class='blauw'>duration:" . $movie['duration'] .
-            "</p> <p class='blauw'>year: " . $movie['publication_year'] . "</p> <p class='blauw'>price: " . $movie['price'] .
-            "</p></div> ";
-        $html .= "<div class='geel description'><h2 class='geel'>Description:</h2><p class='geel'>" . $movie['description'] . "</p></div>";
+    // foreach ($movies as $movie) {
+    //     $color = getColor();
+    //     $html .= "<div class='{$color} thumbnail mainDetail'>" . "<img src='assets/" . $movie['cover_image'] . "' alt='" . $movie['title']  . "'><div>" . $movie['title'] . "</div></div>";
+    //     $html .= "<div class='blauw smallDetails'><p class='blauw'>duration:" . $movie['duration'] .
+    //         "</p> <p class='blauw'>year: " . $movie['publication_year'] . "</p> <p class='blauw'>price: " . $movie['price'] .
+    //         "</p></div> ";
+    //     $html .= "<div class='geel description'><h2 class='geel'>Description:</h2><p class='geel'>" . $movie['description'] . "</p></div>";
+    // }
+
+    if (isset($_SESSION['loggedIn'])  && ($_SESSION['loggedIn'])) {
+        foreach ($movies as $movie) {
+            $html .= '<video class="thumbnail mainDetail" controls src="assets/' . $movie['URL'] . '" alt="' . $movie['title'] . '" poster="assets/' . $movie['cover_image'] .
+                '" preload="metadata"></video>                  
+        ';
+        }
+    } else {
     }
+
     return $html;
 }
 

@@ -33,11 +33,8 @@ function generateTop()
         </form>
         <a class="wit" href="search.php">advanced search</a> 
     </div>
-</header>
-<aside class="wit">
-    <span class="wit">loginicoon en naam</span>
-</aside>
-';
+</header>' . generateCustomerHtml();
+
     return $html;
 }
 

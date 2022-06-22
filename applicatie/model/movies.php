@@ -6,7 +6,7 @@ require_once 'helperfunctions.php';
 function getMovieDetails($movie_id)
 {
     $db = maakVerbinding();
-    $sql = "select m.movie_id, m.title, m.cover_image, m.duration, m.publication_year, m.price, m.description from movie m
+    $sql = "select m.movie_id, m.title, m.cover_image, m.duration, m.publication_year, m.price, m.description, URL from movie m
                 where m.movie_id = (:movie_id)";
     $query = $db->prepare($sql);
     $query->execute(['movie_id' => $movie_id]);
