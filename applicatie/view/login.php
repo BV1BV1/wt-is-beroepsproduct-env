@@ -11,7 +11,7 @@ function displayWelcome()
 function createLoginScreen()
 {
     $html = '
-        <form class="wit loginForm spanC2R2" action="processLogin.php" method="post">
+        <form class="wit loginForm" action="processLogin.php" method="post">
             <label class="wit" for="email">e-mail address</label>
             <input class="wit" type="email" id="email" name="email" required>
             <label class="wit" for="text">password</label>

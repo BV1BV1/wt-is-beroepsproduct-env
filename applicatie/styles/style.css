@@ -510,8 +510,12 @@ div span {
 }
 
 .loginForm {
+    height: 100%;
+    grid-column: 3/5;
+    grid-row: 2/4;
     overflow: hidden;
-    /* display: grid; */
+    display: grid;
+    flex-direction: column;
     margin: 0;
 }
 

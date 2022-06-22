@@ -5,6 +5,7 @@ require_once "model/movies.php";
 require_once "view/movies.php";
 require_once "view/login.php";
 include_once "session.php";
+
 ?>
 
 <?php
@@ -17,8 +18,7 @@ if (isset($_SESSION['loggedIn']) && ($_SESSION['loggedIn'])) {
 } else {
     $htmlContent = createLoginScreen();
 }
-
-$htmlContent .= '<div>' . var_dump($_SESSION) . '</div>';
+$htmlContent .= createSpecificFiller(30);
 
 ?>
 

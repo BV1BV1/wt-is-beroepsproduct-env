@@ -8,7 +8,7 @@ include_once "session.php";
 
 
 <?php
-$htmlContent = '
+$htmlContent = createSpecificFiller(40) . '
     <form class="searchForm" action="index.php" method="get">
         <div class="title wit">
             <label class="wit" for="text">Title</label>

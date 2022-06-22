@@ -8,7 +8,7 @@ include_once "session.php";
 ?>
 
 <?php
-$htmlContent = '
+$htmlContent = createSpecificFiller(35) . '
 <form class="registerForm" action="processRegistration.php" method="post">
     <div class="namedetails wit">
             <label class="wit" for="text">First name</label>
