@@ -12,6 +12,7 @@ $htmlContent = getMovieDetailsToHtml(getMovieDetails($_GET['movie_id']))
     . createSpecificFiller(8)
     . searchedMoviesToHtml(getMoviesFromMoviecast())
     . createSpecificFiller(12)
+    . createWishlistButton();
 ?>
 
 <?php include_once "base.php" ?>

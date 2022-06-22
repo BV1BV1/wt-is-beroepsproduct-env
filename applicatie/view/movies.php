@@ -94,3 +94,20 @@ function getGenretabHtml($genres)
 $genreLinks = getGenretabHtml(getPopularGenres());
 
 ///eind genre-index
+
+function createWishlistButton()
+{
+    $html = '';
+    if (!checkMovieOnWishlist()) {
+        $html = ' <form class="red wishlistForm" action="addMovieToWishlist.php" method="post">
+                        <input type="hidden" name="movie_id" value="' . $_GET['movie_id'] . '">
+                        <input class="rood submitbutton" type="submit" value="add to wishlist">
+                    </form>';
+    } else {
+        $html = ' <form class="red wishlistForm" action="removeMovieFromWishlist.php" method="post">
+                        <input type="hidden" name="movie_id" value="' . $_GET['movie_id'] . '">
+                        <input class="rood submitbutton" type="submit" value="remove from wishlist">
+                    </form>';
+    }
+    return $html;
+}

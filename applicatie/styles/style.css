@@ -371,6 +371,11 @@ option {
     grid-row: 7/8;
 }
 
+.wishlistForm {
+    grid-column: 5/6;
+    grid-row: 7/8;
+}
+
 .smallDetails * {
     display: block;
     overflow: hidden;
@@ -522,6 +527,14 @@ div span {
 .loginForm input {
     margin: 8px 8px;
     width: 90%;
+}
+
+.welcomeMessage {
+    grid-column: 3/5;
+    grid-row: 2/4;
+    display: grid;
+    align-items: center;
+    text-align: center;
 }
 
 .loginForm label {

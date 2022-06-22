@@ -114,5 +114,6 @@ input[type=text]:active {
 }
 
 input[type=submit] {
-    cursor:pointer;
+    cursor: pointer;
+    white-space: normal;
 }

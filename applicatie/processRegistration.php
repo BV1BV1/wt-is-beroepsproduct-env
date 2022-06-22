@@ -1,4 +1,6 @@
-<?php require_once 'db_connectie.php'; ?>
+<?php
+include_once "session.php";
+require_once 'db_connectie.php'; ?>
 
 <div> <?= var_dump($_POST) ?>
 </div>

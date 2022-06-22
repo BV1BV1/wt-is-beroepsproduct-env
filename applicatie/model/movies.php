@@ -72,3 +72,57 @@ function getMoviesFromMoviecast()
         return $query->fetchAll();
     }
 }
+
+function getDataForSlider()
+{
+}
+
+function addMovieToWatchlist()
+{
+    $movie_id = $_POST['movie_id'];
+    $email = $_SESSION['email'];
+    // $date = getdate();
+
+    $sql = "insert into Watchhistory(movie_id, customer_mail_address, watch_date, price, invoiced)
+    values (" . $movie_id . ", (:email), getdate() , 1, 0)
+    ";
+    $db = maakVerbinding();
+    $query = $db->prepare($sql);
+    $query->execute([':email' => $email]);
+}
+
+function removeMovieFromWatchlist()
+{
+    $movie_id = $_POST['movie_id'];
+    $email = $_SESSION['email'];
+
+    $sql = "delete from watchhistory
+            where movie_id =" . $movie_id . " AND customer_mail_address = (:email)
+            ";
+    $db = maakVerbinding();
+    $query = $db->prepare($sql);
+    $query->execute(['email' => $email]);
+}
+
+function checkMovieOnWishlist()
+{
+    $movie_id = $_GET['movie_id'];
+    $email = $_SESSION['email'];
+    $results = [];
+
+    $sql = "select * from watchhistory
+            where movie_id =" . $movie_id . " AND customer_mail_address = (:email)
+            ";
+    $db = maakVerbinding();
+    $query = $db->prepare($sql);
+    $query->execute(['email' => $email]);
+    $results = $query->fetchAll();
+
+    if (count($results) == 0) {
+        return false;
+    } else {
+        return true;
+    }
+
+    // return $results;
+}
