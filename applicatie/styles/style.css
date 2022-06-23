@@ -267,6 +267,7 @@ adress {
     max-height: 20%;
     overflow: hidden;
     border-bottom: 1em solid black;
+    transition: all 375ms ease-in;
 }
 
 .ondergenretab {
@@ -287,7 +288,8 @@ adress {
 
 .genretab:hover {
     height: max-content;
-    max-height: max-content;
+    max-height: 100%;
+    transition: all 375ms ease-in;
 }
 
 

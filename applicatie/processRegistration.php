@@ -8,8 +8,11 @@ require_once 'db_connectie.php'; ?>
 
 <?php
 
-var_dump(checkOfEmailBestaat());
-echo registerUser();
+// var_dump(checkOfEmailBestaat());
+// echo registerUser();
+
+header("Location: login.php");
+exit();
 
 ?>
 
