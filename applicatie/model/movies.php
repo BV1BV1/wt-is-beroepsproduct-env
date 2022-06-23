@@ -234,6 +234,26 @@ function checkMovieOnWishlist()
     } else {
         return true;
     }
+}
 
-    // return $results;
+
+function getPopularGenres()
+{
+    $db = maakVerbinding();
+    $sql =    "SELECT TOP 8 G.genre_name as Genre, count(mg.movie_id) as Aantal
+                FROM Genre G left outer join Movie_Genre MG 
+                    on G.genre_name = MG.genre_name
+                group by G.genre_name
+                ORDER by count(mg.movie_id) DESC";
+
+    $data = $db->query($sql);
+
+    $genres = [];
+
+    while ($rij = $data->fetch()) {
+        $genre = $rij['Genre'];
+        $genres[] = $genre;
+    }
+
+    return $genres;
 }
