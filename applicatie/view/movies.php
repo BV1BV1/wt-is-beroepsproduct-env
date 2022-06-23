@@ -114,3 +114,55 @@ function createWishlistButton()
 
     return $html;
 }
+
+function createSlider($movies)
+{
+    $nMovies = count($movies);
+
+    $count = 1;
+    $html = '<div class="rood thumbnail-container main">';
+    foreach ($movies as $movie) {
+        if ($count == 1) {
+            if ($nMovies > 1) {
+                $html .= '  <div class="thumb rood">
+                                <span id="tn-' . $count  . '"> &nbsp; </span>
+                                <img src="assets/' . $movie['cover_image'] . '">
+                                <a class="movielink" href="movie.php?movie_id=' . $movie['movie_id']  . '">' . $movie['title']  . '</a>
+                                <a class="next" href="#tn-' . ($count + 1) . '" aria-label="next">
+                                NEXT
+                                </a>
+                            </div>';
+            } else {
+                $html .= '  <div class="thumb rood">
+                                <span id="tn-' . $count  . '"> &nbsp; </span>
+                                <img src="assets/' . $movie['cover_image'] . '">
+                                <a class="movielink" href="movie.php?movie_id=' . $movie['movie_id']  . '">' . $movie['title']  . '</a>
+                            </div>';
+            }
+        } elseif ($count == $nMovies) {
+            $html .= '  <div class="thumb rood">
+                            <a class="prev" href="#tn-' . ($count - 1) . '" aria-label="previous">
+                            PREV
+                            </a>
+                            <span id="tn-' . $count  . '"> &nbsp; </span>
+                            <img src="assets/' . $movie['cover_image'] . '">
+                            <a class="movielink" href="movie.php?movie_id=' . $movie['movie_id']  . '">' . $movie['title']  . '</a>
+                        </div>';
+        } else {
+            $html .= '  <div class="thumb rood">
+                            <a class="prev" href="#tn-' . ($count - 1) . '" aria-label="previous">
+                            PREV
+                            </a>
+                            <span id="tn-' . $count  . '"> &nbsp; </span>
+                            <img src="assets/' . $movie['cover_image'] . '">
+                            <a class="movielink" href="movie.php?movie_id=' . $movie['movie_id']  . '">' . $movie['title']  . '</a>
+                            <a class="next" href="#tn-' . ($count + 1) . '" aria-label="next">
+                            NEXT
+                            </a>
+                        </div>';
+        }
+        $count++;
+    }
+    $html .= '</div>';
+    return $html;
+}
