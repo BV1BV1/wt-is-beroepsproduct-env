@@ -1,6 +1,6 @@
 <?php
 require_once "functions.php";
-require_once "templates.php";
+require_once "view/templates.php";
 require_once "view/searchdata.php";
 include_once "session.php";
 ?>

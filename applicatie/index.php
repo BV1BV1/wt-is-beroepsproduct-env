@@ -1,25 +1,24 @@
 <?php
 require_once "functions.php";
-require_once "templates.php";
-require_once "view/filler.php";
+require_once "view/templates.php";
 require_once "view/movies.php";
 include_once "session.php";
 
 ?>
 
 <?php
-$htmlContent = <<<HTML
-<div class="genreselectie">
-    <div class="geel genretab">
-        <h1 class="geel">genres</h1> <br>
-        <div class="genrelijst geel"> $genreLinks </div>
-</div>
-<div class="ondergenretab">
-    <div class="wit genrewit"></div>
-    <div class="wit genrewit"></div>
-</div>
-</div>
-HTML;
+
+$htmlContent = generateGenretab();
+$htmlContent .= createSlider(getDefaultMovies());
+
+if ((sizeof($_GET) == 1) && isset($_GET['person_id'])) {
+    $htmlContent .= getCastmemberToHtml(getMoviesFromMoviecastmember());
+} elseif (sizeof($_GET) > 0) {
+    $htmlContent .= searchedMoviesToHtml(getMovieBySearch());
+} else {
+    $htmlContent .= searchedMoviesToHtml(getDefaultMovies());
+}
+
 ?>
 
 

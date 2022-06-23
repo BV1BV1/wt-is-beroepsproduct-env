@@ -91,7 +91,7 @@ function getGenretabHtml($genres)
     return $html;
 }
 
-$genreLinks = getGenretabHtml(getPopularGenres());
+// $genreLinks = getGenretabHtml(getPopularGenres());
 
 ///eind genre-index
 

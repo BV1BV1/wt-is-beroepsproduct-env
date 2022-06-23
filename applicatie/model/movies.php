@@ -73,9 +73,9 @@ function getMoviesFromMoviecast()
     }
 }
 
-function getDataForSlider()
-{
-}
+// function getDataForSlider()
+// {
+// }
 
 function addMovieToWatchlist()
 {

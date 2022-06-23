@@ -2,22 +2,7 @@
 require_once 'db_connectie.php';
 require_once 'helperfunctions.php';
 
-function getContent()
-{
-    if (sizeof($_GET) > 0) {
-        // return getMovieBySearch();
-        return searchedMoviesToHtml(getMovieBySearch());
-    } else {
-        $text = "";
-        for ($i = 0; $i < 30; $i++) {
-            $color = getColor();
-            $size = getSize();
-            $line = "<div class='{$color} {$size}'> {$i} </div>";
-            $text .= $line;
-        }
-        return $text;
-    }
-}
+
 
 function getDefaultMovies()
 {
@@ -28,21 +13,21 @@ function getDefaultMovies()
     return $query->fetchAll();
 }
 
-function getMovie($id)
-{
-    $db = maakVerbinding();
-    $sql = "select * from movie
-            where movie_id = (:movie_id)";
-    $query = $db->prepare($sql);
-    $query->execute(['movie_id' => $id]);
-    $content = "";
+// function getMovie($id)
+// {
+//     $db = maakVerbinding();
+//     $sql = "select * from movie
+//             where movie_id = (:movie_id)";
+//     $query = $db->prepare($sql);
+//     $query->execute(['movie_id' => $id]);
+//     $content = "";
 
-    while ($rij = $query->fetch()) {
-        $content .= "<div class='wit thumbnail'>" . "<img src='assets/" . $rij['cover_image']  . "' alt='." . $rij['title'] . "'><div>" . $rij['title'] . "</div></div>";
-    }
+//     while ($rij = $query->fetch()) {
+//         $content .= "<div class='wit thumbnail'>" . "<img src='assets/" . $rij['cover_image']  . "' alt='." . $rij['title'] . "'><div>" . $rij['title'] . "</div></div>";
+//     }
 
-    return $content;
-}
+//     return $content;
+// }
 
 
 $params = [];
