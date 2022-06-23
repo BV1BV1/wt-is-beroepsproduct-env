@@ -57,7 +57,7 @@ function getMoviesFromMoviecast()
 
     $counter = 0;
 
-    if (count($personArray) > 1) {
+    if (count($personArray) > 0) {
         foreach ($personArray as $person) {
             $person_id = $person['person_id'];
             if ($counter > 0) {

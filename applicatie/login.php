@@ -10,6 +10,11 @@ include_once "session.php";
 
 <?php
 
+$previous_page = $_SERVER['HTTP_REFERER'];
+$path_parts = pathinfo($previous_page);
+$result = $path_parts['basename'];
+$_SESSION['prevpage'] = $result;
+
 if (isset($_SESSION['loggedIn']) && ($_SESSION['loggedIn'])) {
     $htmlContent = displayWelcome();
 } elseif (isset($_SESSION['loginError'])) {

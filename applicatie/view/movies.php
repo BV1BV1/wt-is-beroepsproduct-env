@@ -27,7 +27,7 @@ function getMovieDetailsToHtml($movies)
 function getMovieCastToHtml($movies)
 {
     $html = '';
-    if (count($movies) > 1) {
+    if (count($movies) > 0) {
         $text = "";
         $html = "<div class='wit castDetails'><h1 class='wit'>Cast:</h1> <p class='wit'>";
 

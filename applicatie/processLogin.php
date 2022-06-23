@@ -35,6 +35,12 @@ function checkLogindetails()
         $_SESSION['loginError'] = "Het was niet mogelijk om je me de ingevoerde gegevens in te loggen.";
     }
 
+    if (str_contains($_SESSION['prevpage'], 'movie_id')) {
+        $page = $_SESSION['prevpage'];
+        header("Location:$page");
+        exit();
+    }
+
     header("Location: login.php");
     exit();
 }

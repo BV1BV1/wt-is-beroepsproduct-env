@@ -144,7 +144,7 @@ function searchedMoviesToHtml($movies)
     }
 
     //elke film wordt in een thumbnail gezet met wat "padding" van lege vakjes er om heen voor esthetische redenen
-    if ($movies && count($movies) > 1) {
+    if ($movies && count($movies) > 0) {
         foreach ($movies as $movie) {
             $html .= createFiller();
             $color = getColor();

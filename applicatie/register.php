@@ -35,7 +35,8 @@ $htmlContent = createSpecificFiller(35) . '
     '
         . paymentOptionsToHtml(getPaymentData())
         . contractsToHtml(getContractOptions())
-        . countryOptionsToHtml(getCountryOptions()) .
-        '</form>';
+        . countryOptionsToHtml(getCountryOptions())
+        . '</form>';
+// $htmlContent .= createSpecificFiller(80);
 ?>
 <?php include_once "base.php" ?>

@@ -113,7 +113,8 @@ function countryOptionsToHtml($countries)
         ';
     }
     $html .= '
-    <div>
+    </select>
+    </div>
     ';
 
     return $html;
