@@ -257,3 +257,18 @@ function getPopularGenres()
 
     return $genres;
 }
+
+function getWishlist()
+{
+    $db = maakVerbinding();
+    $email = $_SESSION['email'];
+    $sql = 'select m.movie_id, m.title, m.cover_image from movie m
+            join Watchhistory w on m.movie_id = w.movie_id
+            where customer_mail_address = (:email)';
+    $db = maakVerbinding();
+    $query = $db->prepare($sql);
+    $query->execute(['email' => $email]);
+    $results = $query->fetchAll();
+
+    return $results;
+}

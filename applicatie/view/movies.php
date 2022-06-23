@@ -5,7 +5,8 @@ require_once "helperfunctions.php";
 function searchedMoviesToHtml($movies)
 {
     $html = "";
-    $results = numberOfSearchresults(getMovieBySearch());
+    // $results = numberOfSearchresults(getMovieBySearch());
+    $results = count($movies);
     $color = getColor();
 
     //boodschap als er geen films voldoen aan de zoekcriteria

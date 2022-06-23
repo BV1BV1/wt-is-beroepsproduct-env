@@ -16,7 +16,12 @@ if ((sizeof($_GET) == 1) && isset($_GET['person_id'])) {
 } elseif (sizeof($_GET) > 0) {
     $htmlContent .= searchedMoviesToHtml(getMovieBySearch());
 } else {
-    $htmlContent .= searchedMoviesToHtml(getDefaultMovies());
+    //als er minstens 3 films in wishlist staan dan tonen we deze ipv de standaard lijst
+    if (getWishlist() && count(getWishlist()) > 2) {
+        $htmlContent .= searchedMoviesToHtml(getWishlist());
+    } else {
+        $htmlContent .= searchedMoviesToHtml(getDefaultMovies());
+    }
 }
 
 ?>
