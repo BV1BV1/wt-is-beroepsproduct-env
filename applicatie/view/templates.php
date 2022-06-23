@@ -87,3 +87,27 @@ function generateGenretab()
             ';
     return $html;
 }
+
+function generateCustomerHtml()
+{
+    if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']) {
+        // $greeting = generateGreeting() . ' ' .  htmlspecialchars($_SESSION['username']);
+        $html = '<div class="wit customerhtml">
+                    <div class="wit">' .  generateGreeting() . '<br><small class="wit highlightRed">' . htmlspecialchars($_SESSION['username'])  . '</small>'  . '</div>
+                    <div class="wit">
+                        <a href="logout.php" class="wit side"><small class="wit">sign out</small></a>
+                    </div>
+                </div>
+        ';
+        return $html;
+    } else {
+        $html = '<div class="wit customerhtml">
+                    <a href="login.php" class="wit"><h1 class="wit">sign in</h1></a>
+                    <div class="wit">
+                        <a href="register.php" class="wit side"><small class="wit">or register an account</small></a>
+                    </div>
+                </div>';
+    }
+
+    return $html;
+}

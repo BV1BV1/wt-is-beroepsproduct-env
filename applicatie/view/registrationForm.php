@@ -1,22 +1,7 @@
 <?php
 require_once 'db_connectie.php';
 require_once 'helperfunctions.php';
-
-function getContractOptions()
-{
-    $db = maakVerbinding();
-    $sql = "select contract_type, price_per_month, discount_percentage
-            from contract";
-    $data = $db->query($sql);
-
-    return $data->fetchAll();
-}
-// session_start();
-// $_SESSION['customer_id'] = '1234';
-function getCustomerData()
-{
-    $customer_id = $_SESSION(['user_id']);
-}
+require_once './model/registrationForm.php';
 
 function contractsToHtml($contractOptions)
 {
@@ -47,16 +32,6 @@ function contractsToHtml($contractOptions)
     return $html;
 }
 
-function getPaymentData()
-{
-    $db = maakVerbinding();
-    $sql = "select payment_method
-            from payment";
-    $data = $db->query($sql);
-
-    return $data->fetchAll();
-}
-
 function paymentOptionsToHtml($paymentOptions)
 {
     $html = '
@@ -85,16 +60,6 @@ function paymentOptionsToHtml($paymentOptions)
     ';
 
     return $html;
-}
-
-function getCountryOptions()
-{
-    $db = maakVerbinding();
-    $sql = "select country_name
-            from country";
-    $data = $db->query($sql);
-
-    return $data->fetchAll();
 }
 
 function countryOptionsToHtml($countries)
