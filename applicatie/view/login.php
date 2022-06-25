@@ -14,7 +14,7 @@ function createLoginScreen()
         <form class="wit loginForm" action="processLogin.php" method="post">
             <label class="wit" for="email">e-mail address</label>
             <input class="wit" type="email" id="email" name="email" required>
-            <label class="wit" for="text">password</label>
+            <label class="wit" for="password">password</label>
             <input class="wit" type="password" id="password" name="password" required>
             <input class="wit" type="submit" value="Log in">
         </form>

@@ -270,6 +270,14 @@ adress {
     transition: all 375ms ease-in;
 }
 
+/* @media (hover: none) and (pointer: coarse) {
+    .genretab {
+        height: max-content;
+        max-height: 100%;
+    }
+} */
+
+
 .ondergenretab {
     padding: 0;
     margin: 0;

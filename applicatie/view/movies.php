@@ -17,10 +17,11 @@ function searchedMoviesToHtml($movies)
     //elke film wordt in een thumbnail gezet met wat "padding" van lege vakjes er om heen voor esthetische redenen
     if ($movies && count($movies) > 0) {
         foreach ($movies as $movie) {
+            $cleanTitle = str_replace(['"', "'"], '', $movie['title']);
             $html .= createFiller();
             $color = getColor();
             // $html .= "<div class='{$color} thumbnail'>" . "<img src='assets/" . $movie['cover_image'] . "' alt='" . $movie['title']  . "'><div>" . $movie['title'] . "</div></div>";
-            $html .= "<div class='{$color} thumbnail'>" . "<img src='assets/" . $movie['cover_image'] . "' alt='" . $movie['title']  . "'><div><a href='movie.php?movie_id=" . $movie['movie_id'] . "'>" .  $movie['title'] . "</a></div></div>";
+            $html .= '<div class="{$color} thumbnail">' . '<img src="assets/' . $movie['cover_image'] . '" alt="' . $cleanTitle  . '"><div><a href="movie.php?movie_id=' . $movie['movie_id'] . '">"' .  $movie['title'] . '</a></div></div>';
         }
     }
 
@@ -153,11 +154,12 @@ function createSlider($movies)
     $count = 1;
     $html = '<div class="rood thumbnail-container main">';
     foreach ($movies as $movie) {
+        $cleanTitle = str_replace(['"', "'"], '', $movie['title']);
         if ($count == 1) {
             if ($nMovies > 1) {
                 $html .= '  <div class="thumb rood">
                                 <span id="tn-' . $count  . '"> &nbsp; </span>
-                                <img src="assets/' . $movie['cover_image'] . '">
+                                <img src="assets/' . $movie['cover_image'] . '" alt="' . $cleanTitle  . '">
                                 <a class="movielink" href="movie.php?movie_id=' . $movie['movie_id']  . '">' . $movie['title']  . '</a>
                                 <a class="next" href="#tn-' . ($count + 1) . '" aria-label="next">
                                 NEXT
@@ -166,7 +168,7 @@ function createSlider($movies)
             } else {
                 $html .= '  <div class="thumb rood">
                                 <span id="tn-' . $count  . '"> &nbsp; </span>
-                                <img src="assets/' . $movie['cover_image'] . '">
+                                <img src="assets/' . $movie['cover_image'] . '" alt="' . $cleanTitle  . '">
                                 <a class="movielink" href="movie.php?movie_id=' . $movie['movie_id']  . '">' . $movie['title']  . '</a>
                             </div>';
             }
@@ -176,7 +178,7 @@ function createSlider($movies)
                             PREV
                             </a>
                             <span id="tn-' . $count  . '"> &nbsp; </span>
-                            <img src="assets/' . $movie['cover_image'] . '">
+                            <img src="assets/' . $movie['cover_image'] . '" alt="' . $cleanTitle . '">
                             <a class="movielink" href="movie.php?movie_id=' . $movie['movie_id']  . '">' . $movie['title']  . '</a>
                         </div>';
         } else {
@@ -185,7 +187,7 @@ function createSlider($movies)
                             PREV
                             </a>
                             <span id="tn-' . $count  . '"> &nbsp; </span>
-                            <img src="assets/' . $movie['cover_image'] . '">
+                            <img src="assets/' . $movie['cover_image'] . '" alt="' . $cleanTitle  . '">
                             <a class="movielink" href="movie.php?movie_id=' . $movie['movie_id']  . '">' . $movie['title']  . '</a>
                             <a class="next" href="#tn-' . ($count + 1) . '" aria-label="next">
                             NEXT

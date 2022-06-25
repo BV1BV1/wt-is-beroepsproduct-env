@@ -7,25 +7,23 @@ function contractsToHtml($contractOptions)
 {
     $html = '
     <div class="contract blauw">
-        <label class="blauw" for="checkbox">contract options<br><br>
         <fieldset class="blauw">
+        <div class="blauw">contract options<br><br>
     ';
     foreach ($contractOptions as $option) {
         $type = $option['contract_type'];
         $price = $option['price_per_month'];
         $discount = $option['discount_percentage'];
         $html .= '
-        <div class="blauw">
         <label class="blauw" for="' . $type . '"></label>
         <input class="blauw radiobutton" id="' . $type . '" type="radio"
-        name="contractOption" value="' . $type . '" required> ' .  $type .  '
-        <p class="blauw"><small class="blauw">Price: ' . $price . ' euro ' . $discount . '% discount</small></p>
-        </div>   
+        name="contractOption" value="' . $type . '" required> ' .  $type .  '<br>
+        <p class="blauw"><small class="blauw">Price: ' . $price . ' euro ' . $discount . '% discount</small></p>   
     ';
     }
     $html .= '
+    </div>   
     </fieldset>
-    </label>   
 </div>
     ';
 
@@ -36,24 +34,22 @@ function paymentOptionsToHtml($paymentOptions)
 {
     $html = '
     <div class="payment blauw">
-        <label class="blauw" for="checkbox">payment options<br><br>
         <fieldset class="blauw">
+        <div class="blauw">payment options<br><br>
     ';
     foreach ($paymentOptions as $option) {
         $method = $option['payment_method'];
         $html .= '
-        <div class="blauw">
         <label class="blauw" for="' . $method . '"></label>
         <input class="blauw radiobutton" id="' . $method . '" type="radio"
-        name="paymentOption" value="' . $method . '" required> ' .  $method .  '
-        </div>   
+        name="paymentOption" value="' . $method . '" required> ' .  $method .  '<br><br>
     ';
     }
     $html .= '
+    </div>
     </fieldset>
-    </label>
     <div class="blauw">
-    <label class="blauw" for="text">cardnumber<br><small class="blauw">9 digits</small></label>
+    <label class="blauw" for="cardnumber">cardnumber<br><small class="blauw">9 digits</small></label>
     <input class="blauw" pattern="[0-9]{9}" type="text" id="cardnumber" name="cardnumber" required>   
     </div>
 </div>
@@ -68,6 +64,7 @@ function countryOptionsToHtml($countries)
     <div class="country geel">
         <label class="geel" for="country">select country</label>
         <select class="geel" id="country" name="country" required>
+        <option class="geel" value="" disabled selected> selecteer land</option>
            
     ';
 
@@ -89,13 +86,13 @@ function getStaticRegistrationformHtml()
 {
     $html = '
             <div class="namedetails wit">
-                <label class="wit" for="text">First name</label>
+                <label class="wit" for="firstname">First name</label>
                 <input class="wit" type="text" id="firstname" name="firstname" required>
-                <label class="wit" for="text">Last name</label>
+                <label class="wit" for="lastname">Last name</label>
                 <input class="wit" type="text" id="lastname" name="lastname" required>
                 <label class="wit" for="email">e-mail adress</label>
                 <input class="wit" type="email" id="email" name="email" required>
-                <label class="wit" for="text">Username</label>
+                <label class="wit" for="username">Username</label>
                 <input class="wit" type="text" maxlength="8" id="username" name="username" required>
             </div>
             <div class="birthday wit">
@@ -106,7 +103,7 @@ function getStaticRegistrationformHtml()
             <input class="rood submitbutton" type="submit" value="Register">
             <div class="wit password">
                 <label class="wit" for="password">password</label>
-                <input class="wit" minlength="8" type="password" name="password" required>
+                <input class="wit" minlength="8" type="password" id="password" name="password" required>
                 <small class="wit">min 8 chars</small>
             </div>
     ';

@@ -28,7 +28,7 @@ function generateTop()
     </div>
     <div class="wit searchbar"> 
         <form class="wit quickSearch" action="index.php" method="get">
-            <label class="wit" for="text">quick title search</label>
+            <label class="wit" for="title">quick title search</label>
             <input class="wit" type="text" id="title" name="title">
         </form>
         <a class="wit" href="search.php">advanced search</a> 
@@ -46,13 +46,13 @@ function generateFooter()
         <a class="wit logo" href="#top"><img class="wit" alt="logo" src="assets/logo.svg"></a>
         <a class="wit logo" href="#top">back to top</a>
         </div>
-        <adress class="wit">
-        Website made by <a href = "mailto: bobvogel@hotmail.com"> Bob Vogel</a>. <br>
+        <div class="wit">
+        Website made by <a href = "mailto:bobvogel@hotmail.com"> Bob Vogel</a>. <br>
         Corporate office at: <br>
         Fletnix Enterprises <br>
         Ruitenberglaan 31 <br>
         6826 CC Arnhem <br>
-        </adress>
+        </div>
         <div class="generallinks wit"> useful links
         <ul class="wit">
         <li class="wit"><a href="underconstruction.php">frequently asked questions</a></li>

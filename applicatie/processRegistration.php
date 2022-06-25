@@ -9,7 +9,8 @@ require_once 'db_connectie.php'; ?>
 <?php
 
 // var_dump(checkOfEmailBestaat());
-// echo registerUser();
+
+registerUser();
 
 header("Location: login.php");
 exit();
