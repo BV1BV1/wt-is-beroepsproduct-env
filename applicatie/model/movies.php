@@ -97,10 +97,11 @@ function getMovieBySearch()
     return $query->fetchAll();
 }
 
-function getMoviesFromMoviecastmember()
+function getMoviesFromMoviecastmember($id)
 {
     $db = maakVerbinding();
-    $person_id = $_GET['person_id'];
+    // $person_id = $_GET['person_id'];
+    $person_id = $id;
 
     $sql = "select m.movie_id, m.title, m.cover_image from movie m
             join movie_Cast mc on m.movie_id = mc.movie_id 

@@ -12,7 +12,7 @@ $htmlContent = generateGenretab();
 $htmlContent .= createSlider(getDefaultMovies());
 
 if ((sizeof($_GET) == 1) && isset($_GET['person_id'])) {
-    $htmlContent .= getCastmemberToHtml(getMoviesFromMoviecastmember());
+    $htmlContent .= getCastmemberToHtml(getMoviesFromMoviecastmember($_GET['person_id']));
 } elseif (sizeof($_GET) > 0) {
     $htmlContent .= searchedMoviesToHtml(getMovieBySearch());
 } else {

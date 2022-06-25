@@ -2,14 +2,14 @@
 require_once 'db_connectie.php';
 include_once "session.php";
 
-checkLogindetails();
+checkLogindetails($_POST['email'], $_POST['password']);
 
-function checkLogindetails()
+function checkLogindetails($mail, $pass)
 {
     $db = maakVerbinding();
 
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $email = $mail;
+    $password = $pass;
 
     $sql = 'select password
             from customer
@@ -49,13 +49,13 @@ function loginToSession()
 {
     $_SESSION['loggedIn'] = true;
     $_SESSION['email'] = $_POST['email'];
-    $_SESSION['username'] = getUsername();
+    $_SESSION['username'] = getUsername($_POST['email']);
 }
 
-function getUsername()
+function getUsername($mail)
 {
     $db = maakVerbinding();
-    $email = $_POST['email'];
+    $email = $mail;
     $sql = 'select user_name
             from customer
             where customer_mail_address = (:email)

@@ -21,7 +21,7 @@ exit();
 
 function registerUser()
 {
-    if (checkOfEmailBestaat()) {
+    if (checkOfEmailBestaat($_POST['email'])) {
     } else {
         $db = maakVerbinding();
         $email = $_POST['email'];
@@ -50,10 +50,10 @@ function registerUser()
 }
 
 
-function checkOfEmailBestaat()
+function checkOfEmailBestaat($adress)
 {
     $db = maakVerbinding();
-    $email = $_POST['email'];
+    $email = $adress;
     $results = [];
 
     $sql = 'select * from customer

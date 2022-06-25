@@ -59,7 +59,7 @@ function getMovieDetailsToHtml($movies)
 function getCastmemberToHtml($movies)
 {
     $html = "";
-    $results = numberOfSearchresults(getMoviesFromMoviecastmember());
+    $results = numberOfSearchresults(getMoviesFromMoviecastmember($_GET['person_id']));
     $color = getColor();
 
     //boodschap als er geen films voldoen aan de zoekcriteria

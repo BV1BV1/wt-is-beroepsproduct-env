@@ -1,5 +1,7 @@
 <?php
 
+// De functies op deze pagina genereren de standaard elementen (die op meerdere pagina's te vinden zijn).
+
 function generateHead()
 {
 
