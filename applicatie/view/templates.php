@@ -26,7 +26,7 @@ function generateTop()
     $html =  '
     <header>
     <div class="logowrapper wit">
-    <div class="wit logo" id="top"><a href="index.php"><img class="wit" alt="logo" src="assets/logo.svg"></a></div>
+    <div class="wit logo" id="top"><a href="index.php"><img class="wit" alt="logo" src="assets/logo.png"></a></div>
     </div>
     <div class="wit searchbar"> 
         <form class="wit quickSearch" action="index.php" method="get">
@@ -45,7 +45,7 @@ function generateFooter()
     $html = '
     <footer>
         <div class="wit back">
-        <a class="wit logo" href="#top"><img class="wit" alt="logo" src="assets/logo.svg"></a>
+        <a class="wit logo" href="#top"><img class="wit" alt="logo" src="assets/logo.png"></a>
         <a class="wit logo" href="#top">back to top</a>
         </div>
         <div class="wit">

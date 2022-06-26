@@ -17,8 +17,8 @@ if ((sizeof($_GET) == 1) && isset($_GET['person_id'])) {
     $htmlContent .= searchedMoviesToHtml(getMovieBySearch());
 } else {
     //als er minstens 3 films in wishlist staan dan tonen we deze ipv de standaard lijst
-    if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] && getWishlist() && count(getWishlist()) > 2) {
-        $htmlContent .= searchedMoviesToHtml(getWishlist());
+    if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] && getWishlist($_SESSION['email']) && count(getWishlist($_SESSION['email'])) > 2) {
+        $htmlContent .= searchedMoviesToHtml(getWishlist($_SESSION['email']));
     } else {
         $htmlContent .= searchedMoviesToHtml(getDefaultMovies());
     }

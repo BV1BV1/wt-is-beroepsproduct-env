@@ -8,7 +8,6 @@ require_once 'db_connectie.php'; ?>
 
 <?php
 
-// var_dump(checkOfEmailBestaat());
 
 registerUser();
 
@@ -50,10 +49,10 @@ function registerUser()
 }
 
 
-function checkOfEmailBestaat($adress)
+function checkOfEmailBestaat($email)
 {
     $db = maakVerbinding();
-    $email = $adress;
+    // $email = $adress;
     $results = [];
 
     $sql = 'select * from customer

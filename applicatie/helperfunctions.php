@@ -1,5 +1,6 @@
 <?php
 
+//deze functie gebruiken we om de klasse wit, blauw, rood of geel aan een kleurvlak toe te voegen
 function getColor()
 {
     $randNumber = rand(1, 10);
@@ -14,6 +15,7 @@ function getColor()
     }
 }
 
+//deze functie gebruiken we om de grootte van een bepaald kleurvlak te bepalen
 function getSize()
 {
     $randNumber = rand(0, 100);
@@ -34,6 +36,7 @@ function getSize()
     }
 }
 
+//deze functie creert een random aantal kleurvlakken zodat vlakken met een cover image afgewisseld worden door lege kleurvlakken
 function createFiller()
 {
     $fillerText = "";
@@ -47,6 +50,7 @@ function createFiller()
     return $fillerText;
 }
 
+//deze functie wordt gebruikt om een specifiek aantal kleurvlakken toe te voegen als paginavulling
 function createSpecificFiller($ammount)
 {
     $fillerText = "";

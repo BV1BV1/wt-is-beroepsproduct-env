@@ -9,9 +9,9 @@ include_once "session.php";
 <?php
 $htmlContent =
     getMovieDetailsToHtml(getMovieDetails($_GET['movie_id']))
-    . getMovieCastToHtml(getMovieCast())
+    . getMovieCastToHtml(getMovieCast($_GET['movie_id']))
     . createSpecificFiller(8)
-    . searchedMoviesToHtml(getMoviesFromMoviecast())
+    . searchedMoviesToHtml(getMoviesFromMoviecast($_GET['movie_id']))
     . createSpecificFiller(12)
     . createWishlistButton();
 ?>

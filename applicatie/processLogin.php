@@ -4,12 +4,9 @@ include_once "session.php";
 
 checkLogindetails($_POST['email'], $_POST['password']);
 
-function checkLogindetails($mail, $pass)
+function checkLogindetails($email, $password)
 {
     $db = maakVerbinding();
-
-    $email = $mail;
-    $password = $pass;
 
     $sql = 'select password
             from customer
@@ -22,9 +19,6 @@ function checkLogindetails($mail, $pass)
 
     $result = $query->fetch();
     $encryptedPassword = $result['password'];
-
-    // $_SESSION['testPW'] = password_hash("1234password", PASSWORD_DEFAULT);
-    // $_SESSION['passwordHash'] = $encryptedPassword;
 
     if (password_verify($password, $encryptedPassword)) {
         if (isset($_SESSION['loginError'])) {
@@ -52,10 +46,9 @@ function loginToSession()
     $_SESSION['username'] = getUsername($_POST['email']);
 }
 
-function getUsername($mail)
+function getUsername($email)
 {
     $db = maakVerbinding();
-    $email = $mail;
     $sql = 'select user_name
             from customer
             where customer_mail_address = (:email)

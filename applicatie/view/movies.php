@@ -131,7 +131,7 @@ function createWishlistButton()
 {
     $html = '';
     if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']) {
-        if (!checkMovieOnWishlist()) {
+        if (!checkMovieOnWishlist($_GET['movie_id'], $_SESSION['email'])) {
             $html = ' <form class="red wishlistForm" action="addMovieToWishlist.php" method="post">
                             <input type="hidden" name="movie_id" value="' . $_GET['movie_id'] . '">
                             <input class="rood submitbutton" type="submit" value="add to wishlist">

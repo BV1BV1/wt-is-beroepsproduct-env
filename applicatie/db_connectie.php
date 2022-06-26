@@ -1,5 +1,8 @@
 <?php
 
+//Deze code is ons geschikbaar gesteld door de HAN en dus niet door mij zelf gemaakt.
+
+
 // defined in 'variables.env'
 $db_host = 'database_server'; // de database server 
 $db_name = 'movies';                    // naam van database

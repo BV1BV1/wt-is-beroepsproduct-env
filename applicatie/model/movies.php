@@ -2,7 +2,8 @@
 require_once 'db_connectie.php';
 require_once 'helperfunctions.php';
 
-
+//Deze functie haalt een standaard selectie aan films op die door Fletnix in de etalage worden gezet.
+//Op dit moment bestaat deze selectie uit films waarvan het nummer een veelvoud is van acht (als placeholder)
 function getDefaultMovies()
 {
     $db = maakVerbinding();
@@ -97,11 +98,9 @@ function getMovieBySearch()
     return $query->fetchAll();
 }
 
-function getMoviesFromMoviecastmember($id)
+function getMoviesFromMoviecastmember($person_id)
 {
     $db = maakVerbinding();
-    // $person_id = $_GET['person_id'];
-    $person_id = $id;
 
     $sql = "select m.movie_id, m.title, m.cover_image from movie m
             join movie_Cast mc on m.movie_id = mc.movie_id 
@@ -125,7 +124,7 @@ function getMovieDetails($movie_id)
     return  $query->fetchAll();
 }
 
-function getMovieCast()
+function getMovieCast($movie_id)
 {
     $db = maakVerbinding();
     $sql = "select CONCAT(pc.firstname, ' ', pc.lastname) as actor, pc.person_id, CONCAT(pd.firstname, ' ', pd.lastname) as director, pd.person_id from movie m 
@@ -134,17 +133,15 @@ function getMovieCast()
         join person pc on mc.person_id = pc.person_id 
         join person pd on md.person_id = pd.person_id 
         where m.movie_id = (:movie_id)";
-    $movie_id = $_GET['movie_id'];
     $query = $db->prepare($sql);
     $query->execute(['movie_id' => $movie_id]);
     return $query->fetchAll();
 }
 
-function getMoviesFromMoviecast()
+function getMoviesFromMoviecast($movie_id)
 {
     $db = maakVerbinding();
     $personArray = [];
-    $movie_id = $_GET['movie_id'];
 
     $sql = "select person_id
             from movie_cast
@@ -185,15 +182,8 @@ function getMoviesFromMoviecast()
     }
 }
 
-// function getDataForSlider()
-// {
-// }
-
-function addMovieToWatchlist()
+function addMovieToWatchlist($movie_id, $email)
 {
-    $movie_id = $_POST['movie_id'];
-    $email = $_SESSION['email'];
-    // $date = getdate();
 
     $sql = "insert into Watchhistory(movie_id, customer_mail_address, watch_date, price, invoiced)
     values (" . $movie_id . ", (:email), getdate() , 1, 0)
@@ -203,11 +193,8 @@ function addMovieToWatchlist()
     $query->execute([':email' => $email]);
 }
 
-function removeMovieFromWatchlist()
+function removeMovieFromWatchlist($movie_id, $email)
 {
-    $movie_id = $_POST['movie_id'];
-    $email = $_SESSION['email'];
-
     $sql = "delete from watchhistory
             where movie_id =" . $movie_id . " AND customer_mail_address = (:email)
             ";
@@ -216,10 +203,8 @@ function removeMovieFromWatchlist()
     $query->execute(['email' => $email]);
 }
 
-function checkMovieOnWishlist()
+function checkMovieOnWishlist($movie_id, $email)
 {
-    $movie_id = $_GET['movie_id'];
-    $email = $_SESSION['email'];
     $results = [];
 
     $sql = "select * from watchhistory
@@ -237,7 +222,8 @@ function checkMovieOnWishlist()
     }
 }
 
-
+//ik heb gekozen voor een overzicht van de acht meest populaire genres aangezien het mij niet mooi leek om genres met maar 2 of 3 films te tonen
+//deze genres kunnen op de pagina voor geavanceerde zoekopdrachten wel gekozen worden
 function getPopularGenres()
 {
     $db = maakVerbinding();
@@ -259,10 +245,9 @@ function getPopularGenres()
     return $genres;
 }
 
-function getWishlist()
+function getWishlist($email)
 {
     $db = maakVerbinding();
-    $email = $_SESSION['email'];
     $sql = 'select m.movie_id, m.title, m.cover_image from movie m
             join Watchhistory w on m.movie_id = w.movie_id
             where customer_mail_address = (:email)';
