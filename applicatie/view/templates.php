@@ -48,7 +48,7 @@ function generateFooter()
         <a class="wit logo" href="#top"><img class="wit" alt="logo" src="assets/logo.png"></a>
         <a class="wit logo" href="#top">back to top</a>
         </div>
-        <div class="wit">
+        <div class="wit adress">
         Website made by <a href = "mailto:bobvogel@hotmail.com"> Bob Vogel</a>. <br>
         Corporate office at: <br>
         Fletnix Enterprises <br>

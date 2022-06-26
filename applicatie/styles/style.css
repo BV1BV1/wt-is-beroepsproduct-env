@@ -20,7 +20,6 @@
 
 
 div,
-adress,
 aside {
     padding: 0.5em;
 }
@@ -235,13 +234,13 @@ footer .generallinks {
 }
 
 
-adress,
-adress a {
+.adress,
+.adress a {
     font-size: 1.25em;
 }
 
 
-adress {
+.adress {
     grid-column: -2/-4;
     grid-row: 1/3;
 }
