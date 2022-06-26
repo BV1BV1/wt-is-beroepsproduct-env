@@ -270,12 +270,13 @@ adress {
     transition: all 375ms ease-in;
 }
 
-/* @media (hover: none) {
+/* onderstaande media-query waarborgt dat de slider met genres ook te zien is op apparaten die niet kunnen hoveren als primaire inputbron */
+@media (hover: none) {
     .genretab {
         height: max-content;
         max-height: 100%;
     }
-} */
+}
 
 
 .ondergenretab {

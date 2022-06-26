@@ -199,3 +199,19 @@ function createSlider($movies)
     $html .= '</div>';
     return $html;
 }
+
+function getSliderContent()
+{
+    if ((sizeof($_GET) == 1) && isset($_GET['person_id'])) {
+        return getDefaultMovies();
+    } elseif (sizeof($_GET) > 0) {
+        return getMovieBySearch();
+    } else {
+        //als er minstens 3 films in wishlist staan dan tonen we deze ipv de standaard lijst
+        if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] && getWishlist($_SESSION['email']) && count(getWishlist($_SESSION['email'])) > 2) {
+            return (getWishlist($_SESSION['email']));
+        } else {
+            return (getDefaultMovies());
+        }
+    }
+}
